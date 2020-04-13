@@ -1,0 +1,25 @@
+{
+    "warrior": {
+        "hume": {"hp": 1378,"str": 92,"dex": 91,"vit": 87,"agi": 91,"int": 82,"mnd": 73,"chr": 77},
+        "mithra": {"hp": 1378,"str": 89,"dex": 88,"vit": 84,"agi": 96,"int": 82,"mnd": 70,"chr": 70},
+        "galka": {"hp": 1629,"str": 95,"dex": 91,"vit": 95,"agi": 88,"int": 79,"mnd": 73,"chr": 70},
+        "elvaan": {"hp": 1508,"str": 97,"dex": 88,"vit": 90,"agi": 85,"int": 75,"mnd": 78,"chr": 77},
+        "tarutaru": {"hp": 1158,"str": 86,"dex": 91,"vit": 84,"agi": 94,"int": 89,"mnd": 70,"chr": 77}
+    },
+    "dancer": {
+        "hume": {"hp": 1319,"str": 87,"dex": 91,"vit": 86,"agi": 92,"int": 82,"mnd": 73,"chr": 81},
+        "mithra": {"hp": 1319,"str": 84,"dex": 99,"vit": 83,"agi": 97,"int": 82,"mnd": 70,"chr": 74},
+        "galka": {"hp": 1570,"str": 90,"dex": 91,"vit": 94,"agi": 89,"int": 79,"mnd": 73,"chr": 74},
+        "elvaan": {"hp": 1449,"str": 92,"dex": 88,"vit": 89,"agi": 86,"int": 75,"mnd": 78,"chr": 81},
+        "tarutaru": {"hp": 1099,"str": 81,"dex": 91,"vit": 83,"agi": 95,"int": 89,"mnd": 70,"chr": 81}
+    },
+    "food": {
+        "sublimesushi": {"str": 5,"dex": 7, "mnd": -3, "chr": 6, "accMult": 0.1, "accMultCap": 100, "raccMult": 0.1, "raccMultCap": 105},
+        "sublimesushi+1": {"str": 7,"dex": 8, "mnd": -4, "chr": 7, "accMult": 0.11, "accMultCap": 105, "raccMult": 0.1, "raccMultCap": 105},
+        "pizza": {"attkMult": 0.2, "attkMultCap": 50, "accMult": 0.1, "accMultCap": 48},
+        "pizza+1": {"attkMult": 0.21, "attkMultCap": 55, "accMult": 0.11, "accMultCap": 52}
+    },
+    "jobPoints": {
+
+    }
+}

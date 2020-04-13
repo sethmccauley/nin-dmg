@@ -1,0 +1,8 @@
+{
+    "None": {"type": "none", "skill": 0, "tSkill": 0, "combatSkill": 0, "str": 0, "dex": 0, "vit": 0, "int": 0, "mnd": 0, "chr": 0, "accuracy": 0, "attack": 0, "attackPercent": 0, "rAccuracy": 0, "rAttack": 0, "mAccuracy": 0, "mAttackBonus": 0, "mDamage": 0, "dA": 0, "tA": 0, "qA": 0, "zanshin": 0, "dualWield": 0, "haste": 0, "cRate": 0, "cDamage": 0, "storeTp": 0, "regain": 0, "tpBonus": 0, "wsDamage": 0, "fTP": 0, "saveTp": 0, "conserveTp": 0, "Daken": 0, "damage": 0, "delay": 0, "oaX": 0, "oa2": 0, "oa3": 0, "oa4": 0, "oa5": 0, "oa6": 0, "oa7": 0, "oa8": 0, "am3": 0, "am3-2": 0, "am3-3": 0, "aeDamage": 0, "followUp": 0, "pdl": 0},
+    "Heishi Shorinken": {"type": "katana", "combatSkill": 269, "mdamage": 186, "storeTp": 10, "tpBonus": 500, "damage": 159, "delay": 227},
+    "Heishi Shorinken Aug": {"type": "katana", "combatSkill": 269, "accuracy": 30, "mAccuracy": 30, "mdamage": 186, "storeTp": 10, "tpBonus": 500, "damage": 166, "delay": 227},
+    "Ochu Aug": {"type": "katana", "combatSkill": 242, "str": 22, "dex": 22, "vit": 12, "agi": 12, "int": 12, "mnd": 12, "chr": 12, "accuracy": 20, "rAccuracy": 20, "damage": 135, "delay": 227},
+
+    "Tauret": {"type": "dagger", "combatSkill": 250, "dex": 15, "int": 15, "mnd": 15, "accuracy": 40, "attack": 30, "mAccuracy": 40, "mAttackBonus": 16, "mDamage": 217, "damage": 125, "delay": 180}
+}
