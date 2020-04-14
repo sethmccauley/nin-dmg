@@ -1,7 +1,7 @@
 import React from 'react';
 import Heading from './heading';
 
-class Player extends React.Component {
+class PlayerComp extends React.Component {
     render() {
         const { config, update } = this.props
         return(
@@ -16,7 +16,7 @@ class Player extends React.Component {
                             <option value='tarutaru'>Tarutaru</option>
                             <option value='elvaan'>Elvaan</option>
                         </select>
-                        <br /><br />
+                        <br />
                         <div className='w3-row-padding'>
                             <div className='w3-third'>
                                 <label><b>Level:</b> </label>
@@ -61,37 +61,35 @@ class Player extends React.Component {
                         </div>
                         <div className='w3-row-padding'>
                             <div className='w3-quarter'>
-                                <label><b>Sange:</b> </label><input type='number' className='w3-input' max='5' min='0' id='sangeMerits' defaultValue={config.sangeMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Throwing:</b> </label><input type='number' className='w3-input' max='16' min='0' defaultValue='16'></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Katana:</b> </label><input type='number' className='w3-input' max='16' min='0' defaultValue='16' id='katanaSkillMerits' defaultValue={config.katanaSkillMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Katana:</b> </label><input type='number' className='w3-input' max='16' min='0' id='katanaSkillMerits' defaultValue={config.katanaSkillMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Dagger:</b> </label><input type='number' className='w3-input' max='16' min='0' defaultValue='16' id='daggerSkillMerits' defaultValue={config.daggerSkillMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Dagger:</b> </label><input type='number' className='w3-input' max='16' min='0' id='daggerSkillMerits' defaultValue={config.daggerSkillMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Sword:</b> </label><input type='number' className='w3-input' max='16' min='0' defaultValue='16' id='swordSkillMerits' defaultValue={config.swordSkillMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Sword:</b> </label><input type='number' className='w3-input' max='16' min='0' id='swordSkillMerits' defaultValue={config.swordSkillMerits} onChange={(e) => update(e)}></input>
                             </div>
                         </div>
                         <div className='w3-row-padding'>
                             <div className='w3-quarter'>
-                                <label><b>Throwing:</b> </label><input type='number' className='w3-input' max='16' min='0' defaultValue='16'></input>
+                                <label><b>Sange:</b> </label><input type='number' className='w3-input' max='5' min='0' id='sangeMerits' defaultValue={config.sangeMerits} onChange={(e) => update(e)}></input>
+                            </div>
+                            <div className='w3-quarter'>
+                                <label><b>Innin:</b> </label><input type='number' className='w3-input' max='5' min='0' id='inninMerits' defaultValue={config.inninMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
                                 <label><b>Blade: Shun</b> </label><input type='number' className='w3-input' max='5' min='0' defaultValue='5'></input>
                             </div>
-                            <div className='w3-half'>
+                            <div className='w3-quarter'>
                                 <label><b>Job Points:</b> </label><input type='number' className='w3-input' max='2100' min='0' defaultValue='2100'></input>
                             </div>
                         </div>
                         <hr style={{border: '1px dashed teal'}}/>
-                        <select className='w3-select' name='food' id='food' defaultValue={config.food} onChange={(e) => update(e)}>
-                            <option value='food'>Food</option>
-                            <option value='pizza'>Pizza</option>
-                            <option value='pizza+1'>Pizza +1</option>
-                            <option value='sublimesushi'>Sublime Sushi</option>
-                            <option value='sublimesushi+1'>Sublime Sushi +1</option>    
-                        </select><br />
+                        <b>Job Points:</b><br />
+                        <label><b>Innin:</b> </label><input type='number' className='w3-input' style={{width: '25%'}} max='20' min='0' id='inninJobPoints' defaultValue={config.inninJobPoints} onChange={(e) => update(e)}></input>
                     </div>
                     <div className='w3-content w3-col s6 m6 l6 w3-border-left w3-right-align w3-padding'>
                         <h3>Stat Summary-</h3>
@@ -116,14 +114,12 @@ class Player extends React.Component {
                                 <b>Throwing Skill:</b> {config.throwingSkill}<br />
                                 <b>Blade: Shun:</b> {config.bladeShunMerits}<br />
                                 <b>Sange:</b> {config.sangeMerits}<br />
+                                <b>{config.jobPoints > 10 ? 'P.Attack (Gift):' : '' }</b> {config.jobPoints > 10 ? config.pAttackBonus : '' }<br />
+                                <b>{config.jobPoints > 30 ? 'P.Accuracy (Gift):' : '' }</b> {config.jobPoints > 30 ? config.pAccuracyBonus : '' }<br />
+                                <b>{config.jobPoints > 150 ? 'Daken+ (Gift):' : '' }</b> {config.jobPoints > 150 ? config.dakenBonus : '' }<br />
+                                <b>{config.jobPoints > 150 ? 'WSDmg (Gift):' : '' }</b> {config.jobPoints > 150 ? config.wsdmgBonus : '' }<br />
                             </p>
                         </div>
-                    </div>
-                    <div className='w3-section'>
-                        <p><b>Gifts from Job Points:</b></p>
-                    </div>
-                    <div className='w3-section'>
-                        <p><b>Food Effects:</b></p>
                     </div>
                 </div>
             </div>
@@ -131,4 +127,4 @@ class Player extends React.Component {
     }
 }
 
-export default Player;
+export default PlayerComp;

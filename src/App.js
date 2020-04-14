@@ -1,23 +1,30 @@
 import React from 'react';
 import Home from './components/home';
-import Player from './components/player';
-import PlayStyle from './components/playstyle';
-import Target from './components/target';
-import GearSets from './components/gearsets';
-import Data from './components/data.js';
-import Calculator from './components/calculator';
-import Previous from './components/previous';
-import Next from './components/next';
+import PlayerComp from './components/playercomp.js';
+import PlayStyleComp from './components/playstylecomp.js';
+import GearSetsComp from './components/gearsetscomp.js';
+import DataComp from './components/datacomp.js';
+import Calculator from './components/calculator.js';
+import Previous from './components/previous.js';
+import Next from './components/next.js';
+import Buffs from './components/pojo/buffs.js';
+import Player from './components/pojo/player.js';
+import PlayStyle from './components/pojo/playstyle.js';
+import GearSet from './components/pojo/gearset.js';
+import Target from './components/pojo/target.js';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
-
-const model = new Calculator();
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      damageModel: model,
+      player: new Player(),
+      buffs: new Buffs(),
+      gearset: new GearSet(),
+      target: new Target(),
+      playStyle: new PlayStyle(),
+      damageModel: new Calculator(),
       current: 1
     }
   }
@@ -37,16 +44,23 @@ class App extends React.Component {
   }
 
   handleChange = (obj) => e => {
-    const { player, playStyle, gearSets, buffs, target } = this.state.damageModel
+    const { player, playStyle, gearSets, buffs, target } = this.state
     switch(obj){
       case 'player':
         player[e.target.id] = e.target.value;
         player.calculateBaseStats(player.race, player.subJob)
+        player.calculateGiftBonus(player.jobPoints)
+        this.setState({
+          player: player
+        })
+        break
       case 'playStyle':
         playStyle[e.target.id] = e.target.value;
+        break
       case 'gearSets':
         gearSets[e.target.id] = e.target.value;
         gearSets.getTotals()
+        break
       default:
         this.setState({status: 'No Update.'})
     }
@@ -57,20 +71,18 @@ class App extends React.Component {
   }
 
   mountComponent(step){
-    const { player, playStyle, gearSets, buffs, target, data } = this.state.damageModel
+    const { player, playStyle, gearSets, buffs, target, data } = this.state
     switch(step){
       case 1:
         return <Home />
       case 2:
-        return <Player config={player} update={this.handleChange('player')} />
+        return <PlayerComp config={player} update={this.handleChange('player')} />
       case 3:
-        return <PlayStyle config={player, playStyle} buffs={buffs} />
+        return <PlayStyleComp config={{player, playStyle, target}} buffs={buffs} />
       case 4:
-        return <Target config={target} />
+        return <GearSetsComp config={gearSets} />
       case 5:
-        return <GearSets config={gearSets} />
-      case 6:
-        return <Data config={data} />
+        return <DataComp config={data} />
       default:
         return <Home />
     }
@@ -89,7 +101,7 @@ class App extends React.Component {
       </header>
       <main className="App-main">
           <Previous action={() => this.prevStep()} step={current}/>
-          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px', width: '100vw', height: '100vh',order: '2'}}>
+          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px',minHeight: '500px', width: '100vw', height: '100vh',order: '2'}}>
             {mountThis}
           </div>
           <Next action={() => this.nextStep()} step={current} />

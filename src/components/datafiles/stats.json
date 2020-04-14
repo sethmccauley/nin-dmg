@@ -18,8 +18,5 @@
         "sublimesushi+1": {"str": 7,"dex": 8, "mnd": -4, "chr": 7, "accMult": 0.11, "accMultCap": 105, "raccMult": 0.1, "raccMultCap": 105},
         "pizza": {"attkMult": 0.2, "attkMultCap": 50, "accMult": 0.1, "accMultCap": 48},
         "pizza+1": {"attkMult": 0.21, "attkMultCap": 55, "accMult": 0.11, "accMultCap": 52}
-    },
-    "jobPoints": {
-
     }
 }

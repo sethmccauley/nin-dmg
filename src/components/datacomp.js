@@ -1,7 +1,7 @@
 import React from 'react';
 import Heading from './heading';
 
-class Data extends React.Component {
+class DataComp extends React.Component {
     render() {
         return(
             <div className="w3-container w3-round App-data">
@@ -19,4 +19,4 @@ class Data extends React.Component {
     }
 }
 
-export default Data;
+export default DataComp;

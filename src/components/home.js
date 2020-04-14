@@ -3,7 +3,7 @@ import React from 'react'
 function Home(props) {
     return (
     <div className="w3-container w3-round" style={{border: '1px solid #C0C0C0', backgroundColor: 'white'}}>
-        <div className='w3-container w3-section w3-left-align w3-padding' style={{height: '50vh', position: 'relative', zIndex: '1'}}>
+        <div className='w3-container w3-section w3-left-align w3-padding' style={{minHeight: '55vh', position: 'relative', zIndex: '1'}}>
             <div className='App-home'></div>
             <p>Hello from Quetzalcoatl!</p>
             <p>I'd first like to say thank you to all those who came before and contributed to the model we now accept as FFXI's damage calculation.  There are many more to thank who contributed to the data collection, english and japanese players alike. This is modeled on the Excel spreadsheet that I have done my best to maintain.</p>
