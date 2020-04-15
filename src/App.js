@@ -21,9 +21,9 @@ class App extends React.Component {
     this.state = {
       player: new Player(),
       buffs: new Buffs(),
-      gearset: new GearSet(),
+      gearsets: [],
       target: new Target(),
-      playStyle: new PlayStyle(),
+      playStyle: [],
       damageModel: new Calculator(),
       current: 1
     }
@@ -40,6 +40,44 @@ class App extends React.Component {
     const { current } = this.state;
     this.setState({
       current: current - 1
+    })
+  }
+
+  addGearSet = (setName) => {
+    let {gearsets} = this.state
+    gearsets.push(new GearSet())
+    this.setState({
+      gearsets: gearsets
+    })
+  }
+
+  addPlayStyle = (styleName) => {
+    let {playStyle} = this.state
+    playStyle.push(new PlayStyle(styleName))
+    this.setState({
+      playStyle: playStyle
+    })
+  }
+
+  arrowFunctions = (e) => {
+    const {current} = this.state;
+    // Left Arrow
+    if(e.keyCode === 37){
+      if(current < 2) return
+      this.prevStep()
+    }
+    // Right Arrow
+    if(e.keyCode === 39){
+      if(current > 4) return
+      this.nextStep()
+    }
+  }
+
+  componentDidMount(){
+    document.body.addEventListener('keydown', (e) => {
+      if(document.activeElement === document.body) {
+        this.arrowFunctions(e)
+      }
     })
   }
 
@@ -71,16 +109,16 @@ class App extends React.Component {
   }
 
   mountComponent(step){
-    const { player, playStyle, gearSets, buffs, target, data } = this.state
+    const { player, playStyle, gearsets, buffs, target, data } = this.state
     switch(step){
       case 1:
         return <Home />
       case 2:
         return <PlayerComp config={player} update={this.handleChange('player')} />
       case 3:
-        return <PlayStyleComp config={{player, playStyle, target}} buffs={buffs} />
+        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} updateData={this.handleChange('playStyle')}/>
       case 4:
-        return <GearSetsComp config={gearSets} />
+        return <GearSetsComp config={gearsets} style={playStyle} />
       case 5:
         return <DataComp config={data} />
       default:
@@ -101,7 +139,7 @@ class App extends React.Component {
       </header>
       <main className="App-main">
           <Previous action={() => this.prevStep()} step={current}/>
-          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px',minHeight: '500px', width: '100vw', height: '100vh',order: '2'}}>
+          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px',minHeight: '500px', width: '100vw',order: '2'}}>
             {mountThis}
           </div>
           <Next action={() => this.nextStep()} step={current} />

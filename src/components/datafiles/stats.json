@@ -14,9 +14,16 @@
         "tarutaru": {"hp": 1099,"str": 81,"dex": 91,"vit": 83,"agi": 95,"int": 89,"mnd": 70,"chr": 81}
     },
     "food": {
-        "sublimesushi": {"str": 5,"dex": 7, "mnd": -3, "chr": 6, "accMult": 0.1, "accMultCap": 100, "raccMult": 0.1, "raccMultCap": 105},
-        "sublimesushi+1": {"str": 7,"dex": 8, "mnd": -4, "chr": 7, "accMult": 0.11, "accMultCap": 105, "raccMult": 0.1, "raccMultCap": 105},
-        "pizza": {"attkMult": 0.2, "attkMultCap": 50, "accMult": 0.1, "accMultCap": 48},
-        "pizza+1": {"attkMult": 0.21, "attkMultCap": 55, "accMult": 0.11, "accMultCap": 52}
+        "Sublime Sushi": {"name": "Sublime Sushi","str": 5,"dex": 7, "mnd": -3, "chr": 6, "accMult": 0.1, "accMultCap": 100, "raccMult": 0.1, "raccMultCap": 105},
+        "Sublime Sushi +1": {"name": "Sublime Sushi +1","str": 7,"dex": 8, "mnd": -4, "chr": 7, "accMult": 0.11, "accMultCap": 105, "raccMult": 0.1, "raccMultCap": 105},
+        "Marinara Pizza": {"name": "Marinara Pizza","attkMult": 0.2, "attkMultCap": 50, "accMult": 0.1, "accMultCap": 54},
+        "Marinara Pizza +1": {"name": "Marinara Pizza +1","attkMult": 0.21, "attkMultCap": 55, "accMult": 0.11, "accMultCap": 58},
+        "Red Curry Bun": {"name": "Red Curry Bun", "hp": 25, "str": 7, "agi": 1,"int": -2, "attkMult": 0.23, "attkMultCap": 150, "rattkMult": 0.25, "rattkMultCap": 150},
+        "Red Curry Bun +1": {"name": "Red Curry Bun +1", "hp": 35, "str": 7, "agi": 3, "attkMult": 0.25, "attkMultCap": 150, "rattkMult": 0.25, "rattkMultCap": 150},
+        "Altana's Repast": {"name": "Altana's Repast", "str": 10, "dex": 10, "vit": 10, "agi": 10, "chr": 10, "int": 10, "mnd": 10, "accuracy": 70, "attack": 70, "rAccuracy": 70, "rAttack": 70, "mAccuracy": 70, "mAttkBonus": 10, "storeTp": 6},
+        "Alatana's Repast +2": {"name": "Altana's Repast +2", "str": 20, "dex": 20, "vit": 20, "agi": 20, "chr": 20, "int": 20, "mnd": 20, "accuracy": 90, "attack": 90, "rAccuracy": 90, "rAttack": 90, "mAccuracy": 90, "mAttkBonus": 20, "storeTp": 8},
+        "Prime Marine Stewpot": {"name": "Prime Marine Stewpot", "hp": 95, "accuracy": 95, "rAccuracy": 95, "mAccuracy": 95},
+        "Riverfin Soup": {"name": "Riverfin Soup", "accMult": 0.14, "accMultCap": 90, "raccMult": 0.14, "raccMultcap": 90, "attkMult": 0.18, "attkMultCap": 80, "rattkMult": 0.18, "rattkMultCap": 80},
+        "Oceanfin Soup": {"name": "Oceanfin Soup", "accMult": 0.15, "accMultCap": 95, "raccMult": 0.15, "raccMultcap": 95, "attkMult": 0.19, "attkMultCap": 85, "rattkMult": 0.19, "rattkMultCap": 85}
     }
 }

@@ -1,13 +1,48 @@
 import React from 'react';
 import Heading from './heading';
+import { TextField, Button } from '@material-ui/core';
+import Style from './style';
 
 class PlayStyleComp extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            styleName: ''
+        }
+    }
+
+    watchField = (e) => {
+        this.setState({
+            styleName: e.target.value
+        })
+    }
+
     render() {
+        const styleCards = this.props.style.map((value, i) => {
+            return (
+                <Style
+                    key={i}
+                    title={value.name}
+                    style={this.props.style[this.props.style.findIndex(val => val.name === value.name)]}
+                    updateData={this.props.updateData}
+                />
+            )
+        })
         return(
             <div className="w3-container w3-round App-playstyle">
                 <Heading heading="Play Style"/>
-                <div className=' w3-container w3-section'>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere
+                <div className='w3-container w3-left-align'>
+                    <p style={{marginTop: '0px'}}>Play styles will act as a collection of configurations of food/buffs/weaponskills/etc to push to the data controller at the end.</p>
+                    <TextField 
+                        id='styleName' 
+                        size='small' 
+                        label='ex: Dynamis Wave 1' 
+                        variant='outlined' 
+                        style={{width: '50%'}}
+                        onChange={this.watchField}
+                    /> <Button variant='contained' color='primary' id='createStyle' onClick={() => this.props.createStyle(this.state.styleName)} disableElevation>Create</Button> <br />
+                    <hr style={{border: '1px dashed teal'}}/>
+                    {styleCards}
                 </div>
             </div>
         )

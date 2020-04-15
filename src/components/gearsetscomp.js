@@ -1,8 +1,7 @@
 import React from 'react';
 import Heading from './heading';
-import TextField from '@material-ui/core/TextField'
-import AutoComplete from '@material-ui/lab/Autocomplete'
 import * as weapons from './datafiles/weapons.json';
+import Set from '../components/set.js'
 
 const weaponsList = []
 for(let [key, values] of Object.entries(weapons.default)){
@@ -10,23 +9,25 @@ for(let [key, values] of Object.entries(weapons.default)){
 }
 
 class GearSetsComp extends React.Component {
-
+    
 
     render() {
+        console.log(this.props)
+        const gearCards = this.props.config.length > 0 ? this.props.config.map((gearset, i) => {
+            return (
+                <Set 
+                    key={i} 
+                    set={gearset}
+                />
+            )
+        }) : ''
         return(
             <div className="w3-container w3-round App-gearsets">
                 <Heading heading="4. Gear Sets"/>
                 <div className='w3-container w3-left-align'>
-                    <h4>Generate a new gear set named: <TextField /></h4>
-                    
-                    
-                    <AutoComplete
-                        options={weaponsList} 
-                        style={{width: '300px'}} 
-                        openOnFocus={false}
-                        renderInput={(params) => <TextField {...params} label='Main Hand' />} 
-                    />
-                    
+                    <p>If no gearsets display, please generate a PlayStyle first.</p>
+                    <hr style={{border: '1px dashed teal'}}/>
+                    {gearCards}
                 </div>
             </div>
         )
