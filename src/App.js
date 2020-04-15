@@ -11,7 +11,6 @@ import Buffs from './components/pojo/buffs.js';
 import Player from './components/pojo/player.js';
 import PlayStyle from './components/pojo/playstyle.js';
 import GearSet from './components/pojo/gearset.js';
-import Target from './components/pojo/target.js';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -22,7 +21,6 @@ class App extends React.Component {
       player: new Player(),
       buffs: new Buffs(),
       gearsets: [],
-      target: new Target(),
       playStyle: [],
       damageModel: new Calculator(),
       current: 1
@@ -52,7 +50,11 @@ class App extends React.Component {
   }
 
   addPlayStyle = (styleName) => {
+    if(styleName === '') return
     let {playStyle} = this.state
+    let usedName = playStyle.findIndex(value => value.name === styleName)
+    if(usedName !== -1) return
+
     playStyle.push(new PlayStyle(styleName))
     this.setState({
       playStyle: playStyle

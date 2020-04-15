@@ -42,12 +42,12 @@
 }
 
 .App-playstyle {
-  background-image: linear-gradient(#ffd1d8, white);
+  background-image: linear-gradient(#f0f0f0, white);
   background-repeat: no-repeat;
 }
 
 .App-gearsets {
-  background-image: linear-gradient(#d0ccf3, white);
+  background-image: linear-gradient(#f0f0f0, white);
   background-repeat: no-repeat;
 }
 

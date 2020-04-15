@@ -1,16 +1,13 @@
 import GearSet from './gearset';
 import * as gear from '../datafiles/weapons.json'
 
-const gearList = []
-
-for(const [key,value] of Object.entries(gear.default)){
-    gearList.push(key)
-}
+const gearList = gear.default
 
 test('Check the retrieval of stats.', () => {
     let gearSet1 = new GearSet()
-    gearSet1.mainhand = gear.Tauret
-    gearSet1.offHand = gear['Ochu Aug']
-    expect(gearSet1.getTotal('dex')).toBe(37)
-    expect(gearSet1.getTotal('delay')).toBe(407)
+    gearSet1.gear.mainhand = gearList[gearList.findIndex(value => value.name === "Tauret")]
+    gearSet1.gear.offHand = gearList[gearList.findIndex(value => value.name === "Ochu Aug")]
+    gearSet1.getTotal()
+    expect(gearSet1.dex).toBe(37)
+    expect(gearSet1.delay).toBe(407)
 })

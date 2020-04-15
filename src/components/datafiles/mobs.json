@@ -1,0 +1,18 @@
+[
+    {"name": "Trivial", "level": 84, "levelCorrection": "yes", "defense": 360, "evasion": 351, "agi": 74, "vit": 75, "int": 75, "critDefense": 0, "critRate": 0},
+    {"name": "DC Dynamis", "level": 96, "levelCorrection": "yes", "defense": 435, "evasion": 405, "agi": 98, "vit": 95, "int": 95, "critDefense": 0, "critRate": 0},
+    {"name": "Buffalo EM", "level": 99, "levelCorrection": "yes", "defense": 516, "evasion": 411, "agi": 77, "vit": 118, "int": 118, "critDefense": 0.14, "critRate": 0},
+    {"name": "Chapuli (100)", "level": 100, "levelCorrection": "no", "defense": 498, "evasion": 468, "agi": 106, "vit": 110, "int": 110, "critDefense": 0, "critRate": 0},
+    {"name": "Chapuli (102)", "level": 102, "levelCorrection": "no", "defense": 534, "evasion": 505, "agi": 108, "vit": 112, "int": 112, "critDefense": 0, "critRate": 0},
+    {"name": "Delve Fodder", "level": 107, "levelCorrection": "no", "defense": 610, "evasion": 590, "agi": 136, "vit": 136, "int": 136, "critDefense": 0, "critRate": 0},
+    {"name": "Qilin", "level": 110, "levelCorrection": "yes", "defense": 560, "evasion": 485, "agi": 120, "vit": 120, "int": 120, "critDefense": 0, "critRate": 0},
+    {"name": "Kamihr Raaz", "level": 113, "levelCorrection": "no", "defense": 753, "evasion": 713, "agi": 127, "vit": 138, "int": 123, "critDefense": 0, "critRate": 0},
+    {"name": "Tojil", "level": 130, "levelCorrection": "no", "defense": 1900, "evasion": 870, "agi": 200, "vit": 200, "int": 200, "critDefense": 0, "critRate": 0},
+    {"name": "Serac Rabbit", "level": 126, "levelCorrection": "no", "defense": 1090, "evasion": 1068, "agi": 235, "vit": 228, "int": 215, "critDefense": 0, "critRate": 0},
+    {"name": "Apex Leech (117)", "level": 127, "levelCorrection": "no", "defense": 1130, "evasion": 989, "agi": 230, "vit": 230, "int": 220, "critDefense": 0, "critRate": 0},
+    {"name": "Apex Toad (131)", "level": 131, "levelCorrection": "no", "defense": 1286, "evasion": 1103, "agi": 242, "vit": 242, "int": 232, "critDefense": 0, "critRate": 0},
+    {"name": "Apex Bat (136)", "level": 136, "levelCorrection": "no", "defense": 1439, "evasion": 1254, "agi": 290, "vit": 281, "int": 244, "critDefense": 0, "critRate": 0},
+    {"name": "Apex Bhoot (139)", "level": 139, "levelCorrection": "no", "defense": 1439, "evasion": 1319, "agi": 301, "vit": 295, "int": 260, "critDefense": 0, "critRate": 0},
+    {"name": "NM iLvl 140 (Theorized)", "level": 140, "levelCorrection": "no", "defense": 1500, "evasion": 1500, "agi": 325, "vit": 325, "int": 325, "critDefense": 0, "critRate": 0},
+    {"name": "Warder of Courage", "level": 150, "levelCorrection": "no", "defense": 2100, "evasion": 1720, "agi": 390, "vit": 390, "int": 390, "critDefense": 0, "critRate": 0}
+]

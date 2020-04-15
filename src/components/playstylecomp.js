@@ -36,7 +36,7 @@ class PlayStyleComp extends React.Component {
                     <TextField 
                         id='styleName' 
                         size='small' 
-                        label='ex: Dynamis Wave 1' 
+                        label='ex: Standard Setup w/BRD' 
                         variant='outlined' 
                         style={{width: '50%'}}
                         onChange={this.watchField}
