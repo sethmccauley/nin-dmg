@@ -147,7 +147,9 @@ class App extends React.Component {
           <Next action={() => this.nextStep()} step={current} />
       </main>
       <footer>
-
+        <div className='w3-container'>
+          <div id='footerSpacer' style={{height: '100px'}}></div>
+        </div>
       </footer>
     </div>
     )

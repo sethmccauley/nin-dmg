@@ -15,6 +15,7 @@ export default class Player {
         this.mnd= 0;
         this.int= 0;
         this.crit= 5;
+        this.pdl= 0.1;
         this.katanaSkill= 276;
         this.throwingSkill= 276;
         this.daggerSkill= 230;

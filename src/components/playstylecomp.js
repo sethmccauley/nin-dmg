@@ -32,7 +32,7 @@ class PlayStyleComp extends React.Component {
             <div className="w3-container w3-round App-playstyle">
                 <Heading heading="Play Style"/>
                 <div className='w3-container w3-left-align'>
-                    <p style={{marginTop: '0px'}}>Play styles will act as a collection of configurations of food/buffs/weaponskills/etc to push to the data controller at the end.</p>
+                    <p style={{marginTop: '0px'}}>Play styles will act as a collection of configurations of buffs and weaponskills to push to the data controller at the end.</p>
                     <TextField 
                         id='styleName' 
                         size='small' 

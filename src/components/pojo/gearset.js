@@ -2,7 +2,6 @@ export default class GearSet {
     constructor(){
         this.gear= {
             mainHand: '',
-            mainHand: '',
             offHand: '',
             ranged: '',
             ammo: '',
@@ -19,7 +18,6 @@ export default class GearSet {
             legs: '',
             feet: '',
         }
-        // this.delay= 0;
         this.hp= 0;
         this.str= 0;
         this.dex= 0;
@@ -53,17 +51,19 @@ export default class GearSet {
         this.dualWield= 0;
     }
     getTotal(){
-        // Should put into temp obj where all start at 0
-        for(const [key, value] of Object.entries(this.gear)){
+        let tempTotals = {}
+        for(const value of Object.values(this.gear)){
             if(typeof(value) === 'object'){
                 for(const [k,v] of Object.entries(value)){
                     if(k !== 'name' && k !== 'type'){
-                        if(!this[k]) this[k] = 0
-                        this[k] += parseFloat(v, 10);
+                        if(!tempTotals[k]) tempTotals[k] = 0
+                        tempTotals[k] += parseFloat(v, 10);
                     }
                 }
             }
         }
-        // Then copy to this obj
+        for(const [key, value] of Object.entries(tempTotals)){
+            this[key] = value
+        }
     }
 }

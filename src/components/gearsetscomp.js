@@ -13,7 +13,7 @@ class GearSetsComp extends React.Component {
 
     render() {
         console.log(this.props)
-        const gearCards = this.props.config.length > 0 ? this.props.config.map((gearset, i) => {
+        const gearCards = this.props.style.length > 0 ? this.props.style.map((gearset, i) => {
             return (
                 <Set 
                     key={i} 

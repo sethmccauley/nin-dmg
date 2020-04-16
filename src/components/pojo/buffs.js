@@ -33,6 +33,7 @@ export default class Buffs {
             },
             dnc: {
                 hasteSamba: false,
+                hasteSambaValue: 10,
             },
             brd: {
                 singingSkill: 900,
