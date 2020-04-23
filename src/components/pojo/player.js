@@ -14,7 +14,7 @@ export default class Player {
         this.vit= 0;
         this.mnd= 0;
         this.int= 0;
-        this.crit= 5;
+        this.critMerits= 5;
         this.pdl= 0.1;
         this.katanaSkill= 276;
         this.throwingSkill= 276;
@@ -63,7 +63,7 @@ export default class Player {
         this.katanaSkill = 276 + 5*(Math.max(0, Math.min(localLevel-75, 5)))+6*(Math.max(0, Math.min(localLevel-80, 10)))+7*(Math.max(0, localLevel-90)) + parseInt(Math.min(this.katanaSkillMerits, 16))
         this.throwingSkill = 276 + 5*(Math.max(0, Math.min(localLevel-75, 5)))+6*(Math.max(0, Math.min(localLevel-80, 10)))+7*(Math.max(0, localLevel-90)) + parseInt(Math.min(this.throwingSkillMerits, 16))
         this.daggerSkill = 230 + 5*(Math.max(0, Math.min(localLevel-75, 5)))+6*(Math.max(0, Math.min(localLevel-80, 10)))+7*(Math.max(0, localLevel-90)) + parseInt(Math.min(this.daggerSkillMerits, 16))
-        this.swordSkill = 225 + 5*(Math.max(0, Math.min(localLevel-75, 5)))+6*(Math.max(0, Math.min(localLevel-80, 10)))+7*(Math.max(0, localLevel-90)) + parseInt(Math.min(this.daggerSkillMerits, 16))
+        this.swordSkill = 225 + 5*(Math.max(0, Math.min(localLevel-75, 5)))+6*(Math.max(0, Math.min(localLevel-80, 10)))+7*(Math.max(0, localLevel-90)) + parseInt(Math.min(this.swordSkillMerits, 16))
     }
 
     calculateGiftBonus(jobPoints){

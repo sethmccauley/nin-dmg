@@ -114,17 +114,15 @@ class App extends React.Component {
     const { player, playStyle, gearsets, buffs, target, data } = this.state
     switch(step){
       case 1:
-        return <Home />
-      case 2:
         return <PlayerComp config={player} update={this.handleChange('player')} />
-      case 3:
+      case 2:
         return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} updateData={this.handleChange('playStyle')}/>
-      case 4:
+      case 3:
         return <GearSetsComp config={gearsets} style={playStyle} />
-      case 5:
+      case 4:
         return <DataComp config={data} />
       default:
-        return <Home />
+        return <PlayerComp />
     }
   }
   render(){
@@ -135,7 +133,7 @@ class App extends React.Component {
     <div className="App">
       <header className="App-header">
         <div className="w3-content w3-section w3-threequarter" style={{minWidth: '600px'}}>
-          <h2 className="w3-left-align" style={{fontWeight: '600', marginTop: '30px', marginBottom: '0px'}}>FFXI - Online Ninja Damage Calculator</h2>
+          <h2 className="w3-left-align" style={{fontWeight: '600', marginTop: '30px', marginBottom: '0px'}}>FFXI - Ninja Gearset Utility</h2>
           <p className="w3-left-align w3-medium" style={{margin: '0px'}}>"An expiriment." - Langly of Quetzalcoatl</p>
         </div>
       </header>

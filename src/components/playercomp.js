@@ -56,12 +56,12 @@ class PlayerComp extends React.Component {
                                 <label><b>INT:</b> </label><input type='number' className='w3-input' max='15' min='0' id='intMerits' defaultValue={config.intMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Crit %:</b> </label><input type='number' className='w3-input' max='5' min='0' id='crit' defaultValue={config.crit} onChange={(e) => update(e)}></input>
+                                <label><b>Crit %:</b> </label><input type='number' className='w3-input' max='5' min='0' id='critMerits' defaultValue={config.critMerits} onChange={(e) => update(e)}></input>
                             </div>
                         </div>
                         <div className='w3-row-padding'>
                             <div className='w3-quarter'>
-                                <label><b>Throwing:</b> </label><input type='number' className='w3-input' max='16' min='0' defaultValue='16'></input>
+                                <label><b>Throwing:</b> </label><input type='number' className='w3-input' max='16' min='0' id='throwingSkillMerits' defaultValue={config.throwingSkillMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
                                 <label><b>Katana:</b> </label><input type='number' className='w3-input' max='16' min='0' id='katanaSkillMerits' defaultValue={config.katanaSkillMerits} onChange={(e) => update(e)}></input>
@@ -75,21 +75,21 @@ class PlayerComp extends React.Component {
                         </div>
                         <div className='w3-row-padding'>
                             <div className='w3-quarter'>
-                                <label><b>Sange:</b> </label><input type='number' className='w3-input' max='5' min='0' id='sangeMerits' defaultValue={config.sangeMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Sange:</b> </label><input id='sangeMerits' type='number' className='w3-input' max='5' min='0' id='sangeMerits' defaultValue={config.sangeMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Innin:</b> </label><input type='number' className='w3-input' max='5' min='0' id='inninMerits' defaultValue={config.inninMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Innin:</b> </label><input id='inninMerits' type='number' className='w3-input' max='5' min='0' id='inninMerits' defaultValue={config.inninMerits < 6 ? config.inninMerits : 5} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Blade: Shun</b> </label><input type='number' className='w3-input' max='5' min='0' defaultValue='5'></input>
+                                <label><b>Blade: Shun</b> </label><input id='bladeShunMerits' type='number' className='w3-input' max='5' min='0' defaultValue={config.bladeShunMerits < 6 ? config.bladeShunMerits: 5} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Job Points:</b> </label><input type='number' className='w3-input' max='2100' min='0' defaultValue='2100'></input>
+                                <label><b>Job Points:</b> </label><input id='jobPoints' type='number' className='w3-input' max='2100' min='0' defaultValue={config.jobPoints < 2101 ? config.jobPoints: 2100} onChange={(e) => update(e)}></input>
                             </div>
                         </div>
                         <hr style={{border: '1px dashed teal'}}/>
                         <b>Job Points:</b><br />
-                        <label><b>Innin:</b> </label><input type='number' className='w3-input' style={{width: '25%'}} max='20' min='0' id='inninJobPoints' defaultValue={config.inninJobPoints} onChange={(e) => update(e)}></input>
+                        <label><b>Innin:</b> </label><input id='inninJobPoints' type='number' className='w3-input' style={{width: '25%'}} max='20' min='0' id='inninJobPoints' defaultValue={config.inninJobPoints < 21 ? config.inninJobPoints : 20 } onChange={(e) => update(e)}></input>
                     </div>
                     <div className='w3-content w3-col s6 m6 l6 w3-border-left w3-right-align w3-padding'>
                         <h3>Stat Summary-</h3>
@@ -103,7 +103,7 @@ class PlayerComp extends React.Component {
                                 <b>CHR:</b> {config.chr}<br />
                                 <b>MND:</b> {config.mnd}<br />
                                 <b>INT:</b> {config.int}<br />
-                                <b>Crit%:</b> {config.crit}<br />
+                                <b>Crit%:</b> {config.critMerits}<br />
                             </p>
                         </div>
                         <div className='w3-half'>
