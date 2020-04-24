@@ -32,7 +32,7 @@
         {"name": "Herculean Helm (STR WSD+)"},
         {"name": "Kendatsuba Jinpachi"},
         {"name": "Kendatsuba Jinpachi +1"},
-        {"name": "Malignance Chapeau"}
+        {"name": "Malignance Chapeau"},
         {"name": "Mummu Bonnet +2"},
         {"name": "Ryuo Somen +1 A"},
         {"name": "Ryuo Somen +1 B"},
@@ -42,7 +42,7 @@
         {"name": "Caro Necklace", "str": 6, "dex": 6, "attack": 10},
         {"name": "Combatant", "combatSkill": 15, "storeTp": 4},
         {"name": "Fotia Gorget", "accuracy": 10, "fTp": 97.65625},
-        {"name": "Moonlight Nodowa", "accuracy": 25, "zanshin": 10, "storeTp": 10}
+        {"name": "Moonlight Nodowa", "accuracy": 25, "zanshin": 10, "storeTp": 10},
         {"name": "Ninja's Nodowa +1 (Aug)", "dex": 12, "agi": 12, "accuracy": 20, "rAccuracy": 20, "storeTp": 5, "daken": 20, "pdl": 0.08},
         {"name": "Ninja's Nodowa +2 (Aug)", "dex": 15, "agi": 15, "accuracy": 25, "rAccuracy": 25, "storeTp": 7, "daken": 25, "pdl": 0.10},
         {"name": "Rancor Collar (Max)", "accuracy": 6, "critRate": 5}
@@ -52,7 +52,7 @@
         {"name": "Cessance Earring"},
         {"name": "Dedition Earring"},
         {"name": "Dignitary's Earring"},
-        {"name": "Eabani Earring"}
+        {"name": "Eabani Earring"},
         {"name": "Ishvara Earring"},
         {"name": "Lugra Earring"},
         {"name": "Lugra Earring +1"},
@@ -102,7 +102,7 @@
         {"name": "Herculean Gloves (STR WSD+)"},
         {"name": "Kendatsuba Tekko"},
         {"name": "Kendatsuba Tekko +1"},
-        {"name": "Malignance Gloves"}
+        {"name": "Malignance Gloves"},
         {"name": "Mochizuki Tekko +3"},
         {"name": "Mummu Wristbands +2"},
         {"name": "Ryuo Tekko +1 A"},
@@ -189,7 +189,7 @@
         {"name": "Herculean Boots (AGI WSD+)"},
         {"name": "Herculean Boots (STR WSD+)"},
         {"name": "Hizamaru Sune-Ate +2"},
-        {"name": "Malignance Boots"}
+        {"name": "Malignance Boots"},
         {"name": "Mochizuki Sune-Ate +3"},
         {"name": "Mummu Gamashes +2"},
         {"name": "Rao Sune-Ate +1"},

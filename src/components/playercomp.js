@@ -75,10 +75,10 @@ class PlayerComp extends React.Component {
                         </div>
                         <div className='w3-row-padding'>
                             <div className='w3-quarter'>
-                                <label><b>Sange:</b> </label><input id='sangeMerits' type='number' className='w3-input' max='5' min='0' id='sangeMerits' defaultValue={config.sangeMerits} onChange={(e) => update(e)}></input>
+                                <label><b>Sange:</b> </label><input id='sangeMerits' type='number' className='w3-input' max='5' min='0' defaultValue={config.sangeMerits} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
-                                <label><b>Innin:</b> </label><input id='inninMerits' type='number' className='w3-input' max='5' min='0' id='inninMerits' defaultValue={config.inninMerits < 6 ? config.inninMerits : 5} onChange={(e) => update(e)}></input>
+                                <label><b>Innin:</b> </label><input id='inninMerits' type='number' className='w3-input' max='5' min='0' defaultValue={config.inninMerits < 6 ? config.inninMerits : 5} onChange={(e) => update(e)}></input>
                             </div>
                             <div className='w3-quarter'>
                                 <label><b>Blade: Shun</b> </label><input id='bladeShunMerits' type='number' className='w3-input' max='5' min='0' defaultValue={config.bladeShunMerits < 6 ? config.bladeShunMerits: 5} onChange={(e) => update(e)}></input>
@@ -89,7 +89,7 @@ class PlayerComp extends React.Component {
                         </div>
                         <hr style={{border: '1px dashed teal'}}/>
                         <b>Job Points:</b><br />
-                        <label><b>Innin:</b> </label><input id='inninJobPoints' type='number' className='w3-input' style={{width: '25%'}} max='20' min='0' id='inninJobPoints' defaultValue={config.inninJobPoints < 21 ? config.inninJobPoints : 20 } onChange={(e) => update(e)}></input>
+                        <label><b>Innin:</b> </label><input id='inninJobPoints' type='number' className='w3-input' style={{width: '25%'}} max='20' min='0' defaultValue={config.inninJobPoints < 21 ? config.inninJobPoints : 20 } onChange={(e) => update(e)}></input>
                     </div>
                     <div className='w3-content w3-col s6 m6 l6 w3-border-left w3-right-align w3-padding'>
                         <h3>Stat Summary-</h3>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Home from './components/home';
 import PlayerComp from './components/playercomp.js';
 import PlayStyleComp from './components/playstylecomp.js';
 import GearSetsComp from './components/gearsetscomp.js';
@@ -111,14 +110,14 @@ class App extends React.Component {
   }
 
   mountComponent(step){
-    const { player, playStyle, gearsets, buffs, target, data } = this.state
+    const { player, playStyle, gearsets, buffs, data } = this.state
     switch(step){
       case 1:
         return <PlayerComp config={player} update={this.handleChange('player')} />
       case 2:
-        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} updateData={this.handleChange('playStyle')}/>
+        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} update={this.handleChange('playStyle')}/>
       case 3:
-        return <GearSetsComp config={gearsets} style={playStyle} />
+        return <GearSetsComp config={gearsets} style={playStyle} update={this.handleChange('gearset')} />
       case 4:
         return <DataComp config={data} />
       default:
@@ -128,7 +127,6 @@ class App extends React.Component {
   render(){
     const { current } = this.state;
     const mountThis = this.mountComponent(current)
-
     return (
     <div className="App">
       <header className="App-header">
