@@ -78,7 +78,7 @@ class GearSetsComp extends React.Component {
                         </div>
                         <div className="w3-quarter">
                             <AutoComplete id='ear1' 
-                                style={{width: '90%', marginLeft: '8px'}} 
+                                style={{width: '99%'}} 
                                 options={this.getOptions('earrings')} 
                                 getOptionSelected={(option, value) => option.name === value.name} 
                                 getOptionLabel={(option => option.name)} 
@@ -86,7 +86,7 @@ class GearSetsComp extends React.Component {
                         </div>
                         <div className="w3-quarter">
                             <AutoComplete id='ear2' 
-                                style={{width: '90%', marginLeft: '8px'}} 
+                                style={{width: '99%'}}  
                                 options={this.getOptions('earrings')} 
                                 getOptionSelected={(option, value) => option.name === value.name}  
                                 getOptionLabel={(option => option.name)} 
@@ -94,7 +94,7 @@ class GearSetsComp extends React.Component {
                         </div>
                         <div className="w3-quarter">
                             <AutoComplete id='body' 
-                                style={{width: '90%', marginLeft: '8px'}} 
+                                style={{width: '99%'}}  
                                 options={this.getOptions('body')} 
                                 getOptionSelected={(option, value) => option.name === value.name}  
                                 getOptionLabel={(option => option.name)} 
@@ -102,7 +102,7 @@ class GearSetsComp extends React.Component {
                         </div>
                         <div className="w3-quarter">
                             <AutoComplete id='hands' 
-                                style={{width: '90%', marginLeft: '8px'}} 
+                                style={{width: '99%'}}  
                                 options={this.getOptions('hands')} 
                                 getOptionSelected={(option, value) => option.name === value.name}  
                                 getOptionLabel={(option => option.name)} 
@@ -110,28 +110,50 @@ class GearSetsComp extends React.Component {
                         </div>
                         <div className="w3-quarter">
                             <AutoComplete id='ring1' 
-                            style={{width: '90%', marginLeft: '8px'}}                                 options={this.getOptions('head')} 
-                                getOptionSelected={(option, value) => option.name === value.name}  getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Left Ring" size='small' />} />
+                                style={{width: '99%'}} 
+                                options={this.getOptions('rings')} 
+                                getOptionSelected={(option, value) => option.name === value.name}  
+                                getOptionLabel={(option => option.name)} 
+                                renderInput={(params) => <TextField {...params} label="Left Ring" size='small' />} />
                         </div>
                         <div className="w3-quarter">
-                            <AutoComplete id='ring2' style={{width: '90%', marginLeft: '8px'}}                                 options={this.getOptions('head')} 
-                                getOptionSelected={(option, value) => option.name === value.name}  getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Right Ring" size='small' />} />
+                            <AutoComplete id='ring2' 
+                                style={{width: '99%'}} 
+                                options={this.getOptions('rings')} 
+                                getOptionSelected={(option, value) => option.name === value.name}  
+                                getOptionLabel={(option => option.name)} 
+                                renderInput={(params) => <TextField {...params} label="Right Ring" size='small' />} />
                         </div>
                         <div className="w3-quarter">
-                            <AutoComplete id='back' style={{width: '90%', marginLeft: '8px'}}                                 options={this.getOptions('head')} 
-                                getOptionSelected={(option, value) => option.name === value.name}  getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Back" size='small' />} />
+                            <AutoComplete id='back' 
+                                style={{width: '99%'}} 
+                                options={this.getOptions('back')} 
+                                getOptionSelected={(option, value) => option.name === value.name}  
+                                getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Back" size='small' />} />
                         </div>
                         <div className="w3-quarter">
-                            <AutoComplete id='waist' style={{width: '90%', marginLeft: '8px'}}                                 options={this.getOptions('head')} 
-                                getOptionSelected={(option, value) => option.name === value.name}  getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Waist" size='small' />} />
+                            <AutoComplete id='waist' 
+                                style={{width: '99%'}} 
+                                options={this.getOptions('waist')} 
+                                getOptionSelected={(option, value) => option.name === value.name}  
+                                getOptionLabel={(option => option.name)} 
+                                renderInput={(params) => <TextField {...params} label="Waist" size='small' />} />
                         </div>
                         <div className="w3-quarter">
-                            <AutoComplete id='legs' style={{width: '90%', marginLeft: '8px'}}                                 options={this.getOptions('head')} 
-                                getOptionSelected={(option, value) => option.name === value.name}  getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Legs" size='small' />} />
+                            <AutoComplete id='legs' 
+                                style={{width: '99%'}} 
+                                options={this.getOptions('legs')} 
+                                getOptionSelected={(option, value) => option.name === value.name}  
+                                getOptionLabel={(option => option.name)} 
+                                renderInput={(params) => <TextField {...params} label="Legs" size='small' />} />
                         </div>
                         <div className="w3-quarter">
-                            <AutoComplete id='feet' style={{width: '90%', marginLeft: '8px'}}                                 options={this.getOptions('head')} 
-                                getOptionSelected={(option, value) => option.name === value.name}  getOptionLabel={(option => option.name)} renderInput={(params) => <TextField {...params} label="Feet" size='small' />} />
+                            <AutoComplete id='feet' 
+                                style={{width: '99%'}} 
+                                options={this.getOptions('feet')} 
+                                getOptionSelected={(option, value) => option.name === value.name}  
+                                getOptionLabel={(option => option.name)} 
+                                renderInput={(params) => <TextField {...params} label="Feet" size='small' />} />
                         </div>
                     </div>
 
