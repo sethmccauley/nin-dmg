@@ -10,6 +10,8 @@ import Buffs from './components/pojo/buffs.js';
 import Player from './components/pojo/player.js';
 import PlayStyle from './components/pojo/playstyle.js';
 import GearSet from './components/pojo/gearset.js';
+import gear from './components/datafiles/gear.json';
+import weaponsList from './components/datafiles/weapons.json';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -117,7 +119,7 @@ class App extends React.Component {
       case 2:
         return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} update={this.handleChange('playStyle')}/>
       case 3:
-        return <GearSetsComp config={gearsets} style={playStyle} update={this.handleChange('gearset')} />
+        return <GearSetsComp config={gearsets} style={playStyle} update={this.handleChange('gearset')} gearList={gear} weapons={weaponsList} />
       case 4:
         return <DataComp config={data} />
       default:
