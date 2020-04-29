@@ -12,6 +12,7 @@ import PlayStyle from './components/pojo/playstyle.js';
 import GearSet from './components/pojo/gearset.js';
 import gear from './components/datafiles/gear.json';
 import weaponsList from './components/datafiles/weapons.json';
+import TestComp from './components/testComp';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -71,7 +72,7 @@ class App extends React.Component {
     }
     // Right Arrow
     if(e.keyCode === 39){
-      if(current > 4) return
+      if(current > 5) return
       this.nextStep()
     }
   }
@@ -99,8 +100,9 @@ class App extends React.Component {
         playStyle[e.target.id] = e.target.value;
         break
       case 'gearSets':
-        gearSets[e.target.id] = e.target.value;
-        gearSets.getTotals()
+        console.log('Gear Change: ', e.target.id, e.target.value )
+        //gearSets[e.target.id] = e.target.value;
+        //gearSets.getTotals()
         break
       default:
         this.setState({status: 'No Update.'})
@@ -119,9 +121,11 @@ class App extends React.Component {
       case 2:
         return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} update={this.handleChange('playStyle')}/>
       case 3:
-        return <GearSetsComp config={gearsets} style={playStyle} update={this.handleChange('gearset')} gearList={gear} weapons={weaponsList} />
+        return <GearSetsComp config={gearsets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
       case 4:
         return <DataComp config={data} />
+      case 5:
+        return <TestComp gearList={gear}/>
       default:
         return <PlayerComp />
     }
