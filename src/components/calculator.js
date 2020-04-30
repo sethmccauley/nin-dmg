@@ -15,40 +15,57 @@ class Calculator {
     }
 
     handOneAvgStats(){
-        return {cRatio: 0, pDif: 0, critPdif: 0, hitRate: 0, fStr: 0, damage: 0, critRate: 0, enSpell: 0, relicAdd: 0, empyreanAdd: 0}
+        let cRatio=0;
+        let avgPdif=0;
+        let avgCritPdif=0;
+        let hitRate=0.99;
+        let hitSpread= this.getHitSpread()
+        let avgHits=0;
+        let fStr=0;
+        let avgDamage=0;
+        let critRate=0;
+        let enSpell=0;
+        let relicAdd=0;
+        let empyreanAdd=0;
+        avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
+        return {avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell, relicAdd, empyreanAdd}
     }
 
     handTwoAvgStats(){
-        return {cRatio: 0, avgPdif: 0, avgCritPdif: 0, hitRate: 0, fStr: 0, damage: 0, critRate: 0, enSpell: 0}
+        let cRatio=0;
+        let avgPdif=0;
+        let avgCritPdif=0;
+        let hitRate=0.95;
+        let hitSpread= this.getHitSpread()
+        let avgHits=0;
+        let fStr=0;
+        let avgDamage=0;
+        let critRate=0;
+        let enSpell=0;
+        avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
+        return {avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell}
     }
 
     throwingAvgStats(){
-        return {cRatio: 0, critCratio: 0, hitRate: 0, fStr: 0, damage: 0, tpPerHit: 0}
+        let hitRate = .95
+        let daken = this.player.daken + this.gearSet.daken
+        let tpPerHit = 0
+        let avgHits = (1*hitRate*(daken/100))
+        return {avgPdif: 0, avgCritPdif: 0, hitRate, avgHits, avgDamage: 0, tpPerHit}
     }
 
     attackRoundStats(){
-        let localHitsOne = 0
-        let localHitsTwo = 0
-        let localShurikenHits = 0
+        let localHandOne = this.handOneAvgStats()
+        let localHandTwo = this.handTwoAvgStats()
+        let localShurikenHits = this.throwingAvgStats()
         let localHasteTotal = (1024 - 256 - 307)/1024
         let localDualWield = (1 - (35/100))
-        let mainHandHitRate = .99
-        let offHandHitRate = .95
-        let rangedHitRate = .95
-        let hitSpread = {
-            four: (this.player.stats.quadrupleAttack/100),
-            three: ((1 - this.player.stats.quadrupleAttack/100)*(this.player.stats.tripleAttack/100)),
-            two: ((1- this.player.stats.quadrupleAttack/100)*(1 - this.player.stats.tripleAttack/100)*(this.player.stats.doubleAttack/100)),
-            one: ((1- this.player.stats.quadrupleAttack/100)*(1 - this.player.stats.tripleAttack/100)*(1 - this.player.stats.doubleAttack/100))
-        }
+
         // getMagicalHaste() + getGearHaste() + getAbilityHaste()
-        let localDelay = (localDualWield)*(this.gearSet.gear.mainHand.delay + this.gearSet.gear.offHand.delay)*(localHasteTotal)
-        localHitsOne = (0*(1-mainHandHitRate))+(1*mainHandHitRate*hitSpread.one)+(2*mainHandHitRate*hitSpread.two)+(3*mainHandHitRate*hitSpread.three)+(4*mainHandHitRate*hitSpread.four)+(5*mainHandHitRate*0)+(6**mainHandHitRate*0)+(7*mainHandHitRate*0)+(8*mainHandHitRate*0)
-        localHitsTwo = (0*(1-offHandHitRate))+(1*offHandHitRate*hitSpread.one)+(2*offHandHitRate*hitSpread.two)+(3*offHandHitRate*hitSpread.three)+(4*offHandHitRate*hitSpread.four)+(5*offHandHitRate*0)+(6**offHandHitRate*0)+(7*offHandHitRate*0)+(8*offHandHitRate*0)
-        localShurikenHits = (1*rangedHitRate*(this.player.stats.daken/100))
-        return {hitsHandOne: parseFloat(localHitsOne.toFixed(4),10),
-                hitsHandTwo: parseFloat(localHitsTwo.toFixed(4), 10), 
-                hitsShuriken: parseFloat(localShurikenHits.toFixed(4), 10), 
+        let localDelay = (localDualWield)*(this.gearSet.gear.mainhand.delay + this.gearSet.gear.offhand.delay)*(localHasteTotal)
+        return {hitsHandOne: parseFloat(localHandOne.avgHits.toFixed(4),10),
+                hitsHandTwo: parseFloat(localHandTwo.avgHits.toFixed(4), 10), 
+                hitsShuriken: parseFloat(localShurikenHits.avgHits.toFixed(4), 10), 
                 delay: parseFloat(localDelay.toFixed(2), 10)}
     }
 
@@ -69,8 +86,14 @@ class Calculator {
             two: 0,
             one: 0,
         }
+        let hitSpread = {
+            four: (this.player.quadAttack/100),
+            three: ((1 - this.player.quadAttack/100)*(this.player.tripleAttack/100)),
+            two: ((1- this.player.quadAttack/100)*(1 - this.player.tripleAttack/100)*(this.player.doubleAttack/100)),
+            one: ((1- this.player.quadAttack/100)*(1 - this.player.tripleAttack/100)*(1 - this.player.doubleAttack/100))
+        }
         let offHitSpread = {}
-        return (mainHitSpread, offHitSpread)
+        return (hitSpread)
     }
     wsAvgs(){
         // Needs
@@ -88,9 +111,6 @@ class Calculator {
         //  -Buffs (Delay Reduction/Multi-Hit)
         return {baseTpRounds: 0, baseTpTime: 0}
     }
-
-
-
 }
 
 export default Calculator;

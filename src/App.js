@@ -12,7 +12,6 @@ import PlayStyle from './components/pojo/playstyle.js';
 import GearSet from './components/pojo/gearset.js';
 import gear from './components/datafiles/gear.json';
 import weaponsList from './components/datafiles/weapons.json';
-import TestComp from './components/testComp';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -22,7 +21,10 @@ class App extends React.Component {
     this.state = {
       player: new Player(),
       buffs: new Buffs(),
-      gearsets: [],
+      gearSets: {
+        tp: new GearSet(),
+        ws: new GearSet()
+      },
       playStyle: [],
       damageModel: new Calculator(),
       current: 1
@@ -72,7 +74,7 @@ class App extends React.Component {
     }
     // Right Arrow
     if(e.keyCode === 39){
-      if(current > 5) return
+      if(current > 3) return
       this.nextStep()
     }
   }
@@ -100,9 +102,23 @@ class App extends React.Component {
         playStyle[e.target.id] = e.target.value;
         break
       case 'gearSets':
-        console.log('Gear Change: ', e.target.id, e.target.value )
-        //gearSets[e.target.id] = e.target.value;
-        //gearSets.getTotals()
+        let commands = e.target.id.split(' ')
+        let foundItem = {}
+        if(commands[0] === 'mainhand' || commands[0] === 'offhand'){
+          foundItem = weaponsList.find((value) => value.name === e.target.value)
+        } else {
+          let tempTable = commands[0]
+          if(commands[0] === 'ring1' || commands[0] === 'ring2'){
+            tempTable = 'rings'
+          }
+          if(commands[0] === 'ear1' || commands[0] === 'ear2'){
+            tempTable = 'earrings'
+          }
+          foundItem = gear[tempTable].find((value) => value.name === e.target.value)
+        }
+        gearSets[commands[2]].gear[commands[0]]= foundItem
+        gearSets[commands[2]].getTotal()
+        console.log(gearSets)
         break
       default:
         this.setState({status: 'No Update.'})
@@ -114,18 +130,16 @@ class App extends React.Component {
   }
 
   mountComponent(step){
-    const { player, playStyle, gearsets, buffs, data } = this.state
+    const { player, playStyle, gearSets, buffs, data } = this.state
     switch(step){
       case 1:
         return <PlayerComp config={player} update={this.handleChange('player')} />
       case 2:
         return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} update={this.handleChange('playStyle')}/>
       case 3:
-        return <GearSetsComp config={gearsets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
+        return <GearSetsComp config={gearSets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
       case 4:
         return <DataComp config={data} />
-      case 5:
-        return <TestComp gearList={gear}/>
       default:
         return <PlayerComp />
     }
@@ -136,7 +150,7 @@ class App extends React.Component {
     return (
     <div className="App">
       <header className="App-header">
-        <div className="w3-content w3-section w3-threequarter" style={{minWidth: '600px'}}>
+        <div className="w3-content w3-section w3-threequarter bgImage" style={{minWidth: '600px', minHeight: '100px'}}>
           <h2 className="w3-left-align" style={{fontWeight: '600', marginTop: '30px', marginBottom: '0px'}}>FFXI - Ninja Gearset Utility</h2>
           <p className="w3-left-align w3-medium" style={{margin: '0px'}}>"An expiriment." - Langly of Quetzalcoatl</p>
         </div>
