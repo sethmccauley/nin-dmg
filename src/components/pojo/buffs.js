@@ -2,10 +2,10 @@ export default class Buffs {
     constructor(){
         this.buffs = {
             self: {
-                innin: false,
+                innin: true,
                 yonin: false,
                 sange: false,
-                kakkaIchi: false,
+                kakkaIchi: true,
             },
             subJob: {
                 berserk: false,
@@ -14,12 +14,14 @@ export default class Buffs {
             },
             mage: {
                 hasteOne: false,
-                hasteTwo: false,
+                hasteTwo: true,
                 dia: 0
             },
             whm: {
                 enhancingSkill: 500,
-                boostStr: false
+                boostStr: false,
+                boostDex: false,
+                boostAgi: false,
             },
             smn: {
                 summoningSkill: 450,
@@ -28,6 +30,7 @@ export default class Buffs {
             sch: {
                 enhancingSkill: 475,
                 embrava: false,
+                embravaHaste: 25.9,
                 enspell: false,
                 adloquium: false
             },
@@ -39,7 +42,7 @@ export default class Buffs {
                 singingSkill: 900,
                 soulVoice: false,
                 marchPlus: 7,
-                honorMarch: false,
+                honorMarch: true,
                 advancingMarch: false,
                 victoryMarch: false,
                 minuetPlus: 7,
@@ -61,8 +64,8 @@ export default class Buffs {
                 fighterValue: 17,
                 rogueRoll: false,
                 rogueValue: 17,
-                samRoll: false,
-                samValue: 70,
+                samuraiRoll: false,
+                samuraiValue: 70,
                 tacticianRoll: false,
                 tacticianValue: 50,
                 miserRoll: false,

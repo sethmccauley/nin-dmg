@@ -1,48 +1,106 @@
 import React from 'react';
 import Heading from './heading';
-import { TextField, Button } from '@material-ui/core';
-import Style from './style';
+import { Checkbox } from '@material-ui/core'
+
+const aftermathTypes = ['Empyrean', 'Mythic', 'Relic']
+const wsChoices = ["Blade: Rin", "Blade: Retsu", "Blade: Jin", "Blade: Ten", "Blade: Ku", "Blade: Shun", "Blade: Metsu", "Blade: Kamu", "Blade: Hi"]
 
 class PlayStyleComp extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            styleName: ''
-        }
-    }
-
-    watchField = (e) => {
-        this.setState({
-            styleName: e.target.value
-        })
-    }
-
     render() {
-        const styleCards = this.props.style.map((value, i) => {
-            return (
-                <Style
-                    key={i}
-                    title={value.name}
-                    style={this.props.style[this.props.style.findIndex(val => val.name === value.name)]}
-                    updateData={this.props.updateData}
-                />
-            )
-        })
+        const { style, update, buffs } = this.props;
         return(
             <div className="w3-container w3-round App-playstyle">
                 <Heading heading="Play Style"/>
                 <div className='w3-container w3-left-align'>
-                    <p style={{marginTop: '0px'}}>Play styles will act as a collection of configurations of buffs and weaponskills to push to the data controller at the end.</p>
-                    <TextField 
-                        id='styleName' 
-                        size='small' 
-                        label='ex: Standard Setup w/BRD' 
-                        variant='outlined' 
-                        style={{width: '50%'}}
-                        onChange={this.watchField}
-                    /> <Button variant='contained' color='primary' id='createStyle' onClick={() => this.props.createStyle(this.state.styleName)} disableElevation>Create</Button> <br />
-                    <hr style={{border: '1px dashed teal'}}/>
-                    {styleCards}
+                    <div id="buffs"><h5><b>Buffs</b></h5>
+                        <div className='w3-container'>
+                            <div className='w3-section'>
+                                <div className='w3-left-align' style={{padding: '3px'}}>
+                                    <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px'}}>
+                                        <b>Self</b><br />
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.self.kakkaIchi} label="Kakka: Ichi" id="self kakkaIchi" onChange={(e) => update(e)}/>Kakka: Ichi
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.self.sange} label="Sange" id="self sange" onChange={(e) => update(e)}/>Sange
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.self.innin} label="Innin" id="self innin" onChange={(e) => update(e)}/>Innin
+                                        </div>
+                                    </div>
+                                    <div className="w3-row-padding w3-pale-blue w3-round-small w3-border" style={{padding: '4px'}}>
+                                        <b>Mage</b><br />
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.mage.hasteOne} label="Haste One" id="mage hasteOne" onChange={(e) => update(e)}/>Haste One
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.mage.hasteTwo} label="Haste Two" id="mage hasteTwo" onChange={(e) => update(e)}/>Haste Two
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} label="Haste Samba" id="dnc hasteSamba" onChange={(e) => update(e)}/>Haste Samba: <input className="w3-input w3-small" onChange={(e) => update(e)} type="number" id="dnc hasteSambaValue" min="0" max="10" label="Haste Samba" defaultValue={buffs.buffs.dnc.hasteSambaValue} style={{width:'50px',display:'inline',paddingLeft:'4px'}} />
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} label="Haste Samba" id="sch embrava" onChange={(e) => update(e)}/>Embrava: <input className="w3-input w3-small" onChange={(e) => update(e)} type="number" id="sch embravaHaste" max="25.9" min="0" label="Embrava Haste" defaultValue={buffs.buffs.sch.embravaHaste} style={{width:'60px',display:'inline',paddingLeft:'4px'}} />
+                                        </div>
+                                    </div>
+                                    <div className='w3-row-padding w3-light-grey w3-round-small' style={{padding: '4px'}}>
+                                        <b>Bard</b><br />
+                                        <div className="w3-quarter">
+                                            Singing Skill: <input className="w3-input"  id="brd singingSkill" label="BRD: Singing Skill" type="number" defaultValue="900" style={{width: '100px', marginLeft: '8px'}}/>
+                                        </div>
+                                        <div className="w3-quarter">
+                                            March +: <input className="w3-input" id="brd marchPlus" max="7" min="0" label="March +" defaultValue='7' style={{width: '50px', marginLeft: '5px'}} size='small' /> 
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} id="brd soulVoice" onChange={(e) => update(e)}/>Soul Voice<br />
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} id="brd honorMarch" onChange={(e) => update(e)}/>Honor March 
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} id="brd victoryMarch" onChange={(e) => update(e)}/>Victory March<br />
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} id="brd advancingMarch" onChange={(e) => update(e)}/>Advancing March
+                                        </div>
+                                    </div>
+                                    <div className='w3-row-padding w3-pale-blue w3-round-small w3-border' style={{padding: '4px'}}>
+                                        <b>COR</b><br />
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} id="cor fighterRoll" checked={buffs.buffs.cor.fighterRoll} onChange={(e) => update(e)}/>Fighter's<input className="w3-input" id="cor fighterValue" onChange={(e) => update(e)} type="number" defaultValue={buffs.buffs.cor.fighterValue} style={{width: '100px'}} />
+                                        </div>
+                                        <div className="w3-quarter">
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} id="cor samuraiRoll" checked={buffs.buffs.cor.samuraiRoll} onChange={(e) => update(e)}/>Samurai's<input className="w3-input" id="cor samuraiValue" onChange={(e) => update(e)} type="number" defaultValue={buffs.buffs.cor.samuraiValue} style={{width: '100px'}} />
+                                        </div>
+                                    </div>
+                                    <div className='w3-row-padding w3-light-grey w3-round-small' style={{padding: '4px'}}>
+                                        <b>WS</b><br />
+                                        <div className="w3-third">
+                                            <Checkbox size="small" id="style afterMath keepActive" onChange={(e) => update(e)}/>Aftermath (Keep Active)<br />
+                                            <select className="w3-select" id='style afterMath type' onChange={(e) => update(e)} style={{width: '90%', marginLeft: '8px'}}>
+                                                <option key='default' value='none'>Aftermath Type</option>
+                                                {aftermathTypes.map((value, keyIndex) => { 
+                                                    return(<option key={keyIndex} value={value}>{value}</option>);
+                                                })}
+                                            </select>
+                                        </div>
+                                        <div className="w3-third">
+                                            <select className="w3-select" id='style mainWs' onChange={(e) => update(e)} style={{width: '90%', marginLeft: '8px'}}>
+                                                <option key='default' value='none'>Main WeaponSkill</option>
+                                                {wsChoices.map((value, keyIndex) => { 
+                                                    return(<option key={keyIndex} value={value}>{value}</option>);
+                                                })}
+                                            </select>
+                                        </div>
+                                        <div className="w3-third">
+                                            Over TP Rounds:<br />
+                                            <input className="w3-input" id="style tp overRounds" onChange={(e) => update(e)} style={{marginLeft: '8px', width: '200px'}} type="number" defaultValue={style.tp.overRounds} /><br />
+                                            Minimum TP:<br />
+                                            <input className="w3-input" id="style tp minimumTp" onChange={(e) => update(e)} style={{marginLeft: '8px', width: '200px'}} type="number" defaultValue={style.tp.minimumTp} /><br />
+                                            Save TP:<br />
+                                            <input className="w3-input" id="style tp saveTp" onChange={(e) => update(e)} style={{marginLeft: '8px', width: '200px'}} type="number" defaultValue={style.tp.saveTp} /><br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

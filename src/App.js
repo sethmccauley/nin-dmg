@@ -8,12 +8,12 @@ import Previous from './components/previous.js';
 import Next from './components/next.js';
 import Buffs from './components/pojo/buffs.js';
 import Player from './components/pojo/player.js';
-import PlayStyle from './components/pojo/playstyle.js';
 import GearSet from './components/pojo/gearset.js';
 import gear from './components/datafiles/gear.json';
 import weaponsList from './components/datafiles/weapons.json';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
+import PlayStyle from './components/pojo/playstyle.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,8 +25,8 @@ class App extends React.Component {
         tp: new GearSet(),
         ws: new GearSet()
       },
-      playStyle: [],
-      damageModel: new Calculator(),
+      playStyle: new PlayStyle(),
+      damageModel: new Calculator(this.player, this.playStyle, this.gearSets, this.buffs, {}),
       current: 1
     }
   }
@@ -42,26 +42,6 @@ class App extends React.Component {
     const { current } = this.state;
     this.setState({
       current: current - 1
-    })
-  }
-
-  addGearSet = (setName) => {
-    let {gearsets} = this.state
-    gearsets.push(new GearSet())
-    this.setState({
-      gearsets: gearsets
-    })
-  }
-
-  addPlayStyle = (styleName) => {
-    if(styleName === '') return
-    let {playStyle} = this.state
-    let usedName = playStyle.findIndex(value => value.name === styleName)
-    if(usedName !== -1) return
-
-    playStyle.push(new PlayStyle(styleName))
-    this.setState({
-      playStyle: playStyle
     })
   }
 
@@ -99,7 +79,33 @@ class App extends React.Component {
         })
         break
       case 'playStyle':
-        playStyle[e.target.id] = e.target.value;
+        let buffChanges = e.target.id.split(' ')
+        //Style Changes
+        if(buffChanges[0] === 'style'){
+          if(e.target.type === 'checkbox') {
+            playStyle[buffChanges[1]][buffChanges[2]] = e.target.checked
+          } else {
+            if(buffChanges[1] === 'mainWs') playStyle.mainWs = e.target.value
+            else if(buffChanges[1] === 'afterMath' && buffChanges[2] === 'type'){
+              playStyle.afterMath.empyrean = false;
+              playStyle.afterMath.relic = false;
+              playStyle.afterMath.mythic = false;
+              playStyle.afterMath[e.target.value] = true;
+              
+            } 
+            else playStyle[buffChanges[1]][buffChanges[2]] = parseFloat(e.target.value, 10)
+          }
+          break
+        }
+        //Buff Changes
+        if(e.target.type === 'checkbox'){
+          buffs.buffs[buffChanges[0]][buffChanges[1]] = e.target.checked
+        } else {
+          buffs.buffs[buffChanges[0]][buffChanges[1]] = parseFloat(e.target.value, 10)
+        }
+        if(buffChanges[1] === 'hasteTwo' && e.target.checked === true) buffs.buffs.mage.hasteOne = false
+        if(buffChanges[1] === 'hasteOne' && e.target.checked === true) buffs.buffs.mage.hasteTwo = false
+        console.log(buffs.buffs, playStyle)
         break
       case 'gearSets':
         let commands = e.target.id.split(' ')
@@ -118,7 +124,9 @@ class App extends React.Component {
         }
         gearSets[commands[2]].gear[commands[0]]= foundItem
         gearSets[commands[2]].getTotal()
-        console.log(gearSets)
+        this.setState({
+          gearSets: gearSets
+        })
         break
       default:
         this.setState({status: 'No Update.'})
@@ -130,16 +138,16 @@ class App extends React.Component {
   }
 
   mountComponent(step){
-    const { player, playStyle, gearSets, buffs, data } = this.state
+    const { player, playStyle, gearSets, buffs, damageModel } = this.state
     switch(step){
       case 1:
         return <PlayerComp config={player} update={this.handleChange('player')} />
       case 2:
-        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} createStyle={this.addPlayStyle} update={this.handleChange('playStyle')}/>
+        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} update={this.handleChange('playStyle')}/>
       case 3:
         return <GearSetsComp config={gearSets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
       case 4:
-        return <DataComp config={data} />
+        return <DataComp model={damageModel} />
       default:
         return <PlayerComp />
     }

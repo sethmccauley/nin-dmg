@@ -25,7 +25,6 @@ class PlayerComp extends React.Component {
                             <div className='w3-half'>
                                 <label><b>SubJob:</b> </label><select className='w3-select' id='subJob' name='subJob' defaultValue={config.subJob} onChange={(e) => update(e)}>
                                     <option value='warrior'>Warrior</option>
-                                    <option value='dancer'>Dancer</option>
                                 </select>
                             </div>
                         </div>
@@ -112,12 +111,12 @@ class PlayerComp extends React.Component {
                                 <b>Dagger Skill:</b> {config.daggerSkill}<br />
                                 <b>Sword Skill:</b> {config.swordSkill}<br />
                                 <b>Throwing Skill:</b> {config.throwingSkill}<br />
-                                <b>Blade: Shun:</b> {config.bladeShunMerits}<br />
-                                <b>Sange:</b> {config.sangeMerits}<br />
+                                <b>{config.bladeShunMerits > 0 ? 'Blade: Shun: ' : ''}</b>{config.bladeShunMerits > 0 ? config.bladeShunMerits : ''}<br />
+                                <b>{config.sangeMerits > 0 ? 'Sange: ' : ''}</b>{config.sangeMerits > 0 ? config.sangeMerits : ''}<br />
                                 <b>{config.jobPoints > 10 ? 'P.Attack (Gift):' : '' }</b> {config.jobPoints > 10 ? config.pAttackBonus : '' }<br />
                                 <b>{config.jobPoints > 30 ? 'P.Accuracy (Gift):' : '' }</b> {config.jobPoints > 30 ? config.pAccuracyBonus : '' }<br />
                                 <b>{config.jobPoints > 150 ? 'Daken+ (Gift):' : '' }</b> {config.jobPoints > 150 ? config.dakenBonus : '' }<br />
-                                <b>{config.jobPoints > 150 ? 'WSDmg (Gift):' : '' }</b> {config.jobPoints > 150 ? config.wsdmgBonus : '' }<br />
+                                <b>{config.jobPoints > 150 ? 'WSDmg (Gift):' : '' }</b> {config.jobPoints > 150 ? config.wsDmgBonus : '' }<br />
                             </p>
                         </div>
                     </div>
