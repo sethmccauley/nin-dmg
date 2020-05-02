@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2edb0b9283bf9c6e2631cb290b15180c",
+    "revision": "83e87187d4187d7df81da6ea3b49f428",
     "url": "/nin-dmg/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nin-dmg/static/css/2.0fba4bd8.chunk.css"
   },
   {
-    "revision": "ae1ca40911bc9f08396f",
+    "revision": "40c38f383c5e9a46f9f6",
     "url": "/nin-dmg/static/css/main.6cae427c.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nin-dmg/static/js/2.cb74f00b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ae1ca40911bc9f08396f",
-    "url": "/nin-dmg/static/js/main.c5f11fe0.chunk.js"
+    "revision": "40c38f383c5e9a46f9f6",
+    "url": "/nin-dmg/static/js/main.12ab7369.chunk.js"
   },
   {
     "revision": "fdd21b720b414249bc8f",
