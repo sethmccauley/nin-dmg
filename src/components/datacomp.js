@@ -7,21 +7,51 @@ class DataComp extends React.Component {
         const handOne = model.handOneAvgStats(model.gearSets.tp)
         const handTwo = model.handTwoAvgStats(model.gearSets.tp)
         const shuriken = model.throwingAvgStats(model.gearSets.tp)
-        const multiStats = model.playerAndGear(model.gearSets.tp)
+        const multiStats = model.getTpInfluences(model.gearSets.tp)
         const round = model.attackRoundStats()
         return(
             <div className="w3-container w3-round App-data">
                 <Heading heading="Data Summary"/>
-                <div className='w3-container w3-section'>
-                    <div className='w3-left-align' style={{padding: '3px'}}>
+                <div className='w3-container'>
+                    <div className='w3-left-align' style={{padding: '3px', fontSize: '.9em'}}>
+
                         <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px'}}>
                             <h5 style={{margin: '0px 3px'}}><b>Attack Round Averages</b></h5>
-                            <div className="w3-section">
-                                TP Phase Totals:<br />
-                                <span style={{margin: '0px 10px'}}><b>Store TP: </b>{multiStats.storeTp}</span> <span style={{margin: '0px 10px'}}><b>Quad Attack: </b>{multiStats.quadAttack}</span>
-                                <span style={{margin: '0px 10px'}}><b>Triple Attack: </b>{multiStats.tripleAttack}</span><span style={{margin: '0px 10px'}}><b>Double Attack: </b>{multiStats.doubleAttack}</span>
-                                <span style={{margin: '0px 10px'}}><b>Daken: </b>{multiStats.daken}</span><br />
+                            <div className="w3-section w3-row-padding">
+                                <b>TP Phase Totals:</b><br />
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        Store TP: <br />
+                                        Daken: <br />
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        {multiStats.storeTp}<br />
+                                        {multiStats.daken}<br />
+                                    </div>
+                                </div>
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        Quadruple Attack: <br />
+                                        Triple Attack: <br />
+                                        Double Attack: 
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        {multiStats.quadAttack}<br />
+                                        {multiStats.tripleAttack}<br />
+                                        {multiStats.doubleAttack}
+                                    </div>
+                                </div>
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        {/* More Data Space for future pertinent fields */}
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="w3-row-padding w3-light-grey w3-round-small" style={{paddingBottom: '10px'}}>
                             <div className="w3-third">
                                 <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                     <b>Hand One:</b><br />
@@ -30,7 +60,7 @@ class DataComp extends React.Component {
                                     Hit Rate: <br />
                                     Attack: <br />
                                     TP/Hit: <br />
-                                    Hits/Round:<br />
+                                    Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     <br />
@@ -38,8 +68,8 @@ class DataComp extends React.Component {
                                     {handOne.avgCritPdif}<br />
                                     {handOne.hitRate * 100}%<br />
                                     <br />
-                                    <br />
-                                    {round.hitsHandOne}<br />
+                                    {round.tpPerHit}<br />
+                                    {handOne.avgHits}<br />
                                 </div>
                             </div>
 
@@ -51,7 +81,7 @@ class DataComp extends React.Component {
                                     Hit Rate: <br />
                                     Attack: <br />
                                     TP/Hit: <br />
-                                    Hits/Round:<br />
+                                    Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     <br />
@@ -59,8 +89,8 @@ class DataComp extends React.Component {
                                     {handTwo.avgCritPdif}<br />
                                     {handTwo.hitRate * 100}%<br />
                                     <br />
-                                    <br />
-                                    {round.hitsHandTwo}<br />
+                                    {round.tpPerHit}<br />
+                                    {handTwo.avgHits}<br />
                                 </div>
                             </div>
 
@@ -72,22 +102,60 @@ class DataComp extends React.Component {
                                     Hit Rate: <br />
                                     Attack: <br />
                                     TP/Hit: <br />
-                                    Hits/Round:<br />
+                                    Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                    <br />
+                                    {model.isEmpty(model.gearSets.tp.gear.ammo) ? 'No Shuriken' : '' }<br />
                                     {shuriken.avgPdif}<br />
                                     {shuriken.avgCritPdif}<br />
                                     {shuriken.hitRate * 100}%<br />
-                                    <br />
-                                    <br />
+                                    {shuriken.attack}<br />
+                                    {round.shuriken}<br />
                                     {shuriken.avgHits}<br />
                                 </div>
                             </div>
                         </div>
+
                         <div className="w3-row-padding w3-pale-blue w3-round-small w3-border" style={{padding: '4px', marginTop: '8px'}}>
                             <h5 style={{margin: '0px 3px'}}><b>Cycle Round Averages (Minimum TP to WS: {model.playStyle.tp.minimumTp})</b></h5>
-
+                            <div className="w3-section w3-row-padding">
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        Total Delay:<br />
+                                        Delay Cap: <br />
+                                        Delay w/Reduction: 
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        {round.totalDelay}<br />
+                                        {round.delayCap}<br />
+                                        {round.delay}
+                                    </div>
+                                </div>
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        <b>From 0TP to WS</b><br />
+                                        Avg TP per Round: <br />
+                                        Avg Rounds 0 to WS: <br />
+                                        Avg Time 0 to WS: <br />
+                                        Avg TP Total @ WS: 
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        <b>From WS to WS</b><br />
+                                        Avg WS-TP Return:<br />
+                                        Avg Rounds to WS:<br />
+                                        Avg Time to WS:<br />
+                                        Avg TP Total @ WS:
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

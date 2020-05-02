@@ -41,7 +41,7 @@ export default class Buffs {
             brd: {
                 singingSkill: 900,
                 soulVoice: false,
-                marchPlus: 7,
+                marchPlus: 8,
                 honorMarch: true,
                 advancingMarch: false,
                 victoryMarch: false,
