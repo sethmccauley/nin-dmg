@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/nin-dmg/static/css/main.6cae427c.chunk.css",
+    "main.js": "/nin-dmg/static/js/main.c5f11fe0.chunk.js",
+    "main.js.map": "/nin-dmg/static/js/main.c5f11fe0.chunk.js.map",
+    "runtime-main.js": "/nin-dmg/static/js/runtime-main.87168b30.js",
+    "runtime-main.js.map": "/nin-dmg/static/js/runtime-main.87168b30.js.map",
+    "static/css/2.0fba4bd8.chunk.css": "/nin-dmg/static/css/2.0fba4bd8.chunk.css",
+    "static/js/2.cb74f00b.chunk.js": "/nin-dmg/static/js/2.cb74f00b.chunk.js",
+    "static/js/2.cb74f00b.chunk.js.map": "/nin-dmg/static/js/2.cb74f00b.chunk.js.map",
+    "index.html": "/nin-dmg/index.html",
+    "precache-manifest.ba77f1eaca5f91a6e21a4c9946667965.js": "/nin-dmg/precache-manifest.ba77f1eaca5f91a6e21a4c9946667965.js",
+    "service-worker.js": "/nin-dmg/service-worker.js",
+    "static/css/2.0fba4bd8.chunk.css.map": "/nin-dmg/static/css/2.0fba4bd8.chunk.css.map",
+    "static/css/main.6cae427c.chunk.css.map": "/nin-dmg/static/css/main.6cae427c.chunk.css.map",
+    "static/js/2.cb74f00b.chunk.js.LICENSE.txt": "/nin-dmg/static/js/2.cb74f00b.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/nin-dmg/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/App.css": "/nin-dmg/static/media/tarus.c550c7b1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.87168b30.js",
+    "static/css/2.0fba4bd8.chunk.css",
+    "static/js/2.cb74f00b.chunk.js",
+    "static/css/main.6cae427c.chunk.css",
+    "static/js/main.c5f11fe0.chunk.js"
+  ]
+}
