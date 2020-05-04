@@ -55,19 +55,19 @@ class DataComp extends React.Component {
                             <div className="w3-third">
                                 <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                     <b>Hand One:</b><br />
+                                    Attack: <br />
                                     Avg. Non-Crit pDif: <br />
                                     Avg. Crit pDif: <br />
                                     Hit Rate: <br />
-                                    Attack: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.mainhand.name) ? 'H2H' : model.gearSets.tp.gear.mainhand.name}<br />
+                                    <br />
                                     {handOne.avgPdif}<br />
                                     {handOne.avgCritPdif}<br />
                                     {handOne.hitRate * 100}%<br />
-                                    <br />
                                     {round.tpPerHit}<br />
                                     {handOne.avgHits}<br />
                                 </div>
@@ -76,19 +76,19 @@ class DataComp extends React.Component {
                             <div className="w3-third">
                                 <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                     <b>Hand Two:</b><br />
+                                    Attack: <br />
                                     Avg. Non-Crit pDif: <br />
                                     Avg. Crit pDif: <br />
                                     Hit Rate: <br />
-                                    Attack: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.offhand.name) ? '' : model.gearSets.tp.gear.offhand.name}<br />
+                                    <br />
                                     {handTwo.avgPdif}<br />
                                     {handTwo.avgCritPdif}<br />
                                     {handTwo.hitRate * 100}%<br />
-                                    <br />
                                     {round.tpPerHit}<br />
                                     {handTwo.avgHits}<br />
                                 </div>
@@ -97,19 +97,19 @@ class DataComp extends React.Component {
                             <div className="w3-third">
                                 <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                     <b>Throwing:</b><br />
+                                    Attack: <br />
                                     Avg. Non-Crit pDif: <br />
                                     Avg. Crit pDif: <br />
                                     Hit Rate: <br />
-                                    Attack: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.ammo) ? 'No Shuriken' : model.gearSets.tp.gear.ammo.name }<br />
+                                    {shuriken.attack}<br />
                                     {shuriken.avgPdif}<br />
                                     {shuriken.avgCritPdif}<br />
                                     {shuriken.hitRate * 100}%<br />
-                                    {shuriken.attack}<br />
                                     {round.shuriken}<br />
                                     {shuriken.avgHits}<br />
                                 </div>
