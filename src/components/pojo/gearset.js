@@ -60,6 +60,9 @@ export default class GearSet {
         let tempTotals = {}
         let catalogable = ['hp','str','dex','agi','vit','int','chr','mnd','attack','accuracy','rAttack','rAccuracy','mAccuracy','mDamage','mAttackBonus','throwingSkill',
                             'doubleAttack','tripleAttack','quadAttack','storeTp','haste','wsDamage','regain','daken','pdl','critRate','critDamage','dualWield']
+        catalogable.forEach(value => {
+            tempTotals[value] = 0
+        })
         for(const [key, value] of Object.entries(this.gear)){
             if(typeof(value) === 'object'){
                 for(const [k,v] of Object.entries(value)){
@@ -98,5 +101,6 @@ export default class GearSet {
         for(const [key, value] of Object.entries(tempTotals)){
             this[key] = value
         }
+        tempTotals = {}
     }
 }

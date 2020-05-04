@@ -122,6 +122,7 @@ class App extends React.Component {
           }
           foundItem = gear[tempTable].find((value) => value.name === e.target.value)
         }
+        if(e.target.value === 'none') foundItem = {name: 'none'}
         gearSets[commands[2]].gear[commands[0]]= foundItem
         gearSets[commands[2]].getTotal()
         this.setState({

@@ -9,9 +9,7 @@ export default class PlayStyle {
             mythic: false,
             empyrean: false,
         }
-        this.mainWs = {
-            name: '',
-        }
+        this.mainWs = '';
         this.tp = {
             overRounds: .5,
             saveTp: 0,

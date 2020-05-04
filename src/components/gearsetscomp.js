@@ -14,7 +14,7 @@ class GearSetsComp extends React.Component {
                             <div className="w3-quarter">
                                 <select defaultValue={config.tp.gear.mainhand.name} style={{width: '99%'}} className='w3-select'
                                     onChange={(e) => update(e)} id='mainhand set1 tp'>
-                                    <option key='default' value=''>Mainhand</option>
+                                    <option key='default' value='none'>Mainhand</option>
                                     {weapons.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value.name}>{value.name}</option>);
                                     })}
@@ -23,7 +23,7 @@ class GearSetsComp extends React.Component {
                             <div className="w3-quarter">
                             <select defaultValue={config.tp.gear.offhand.name} style={{width: '99%'}} className='w3-select'
                                     onChange={(e) => update(e)} id='offhand set1 tp'>
-                                        <option key='default' value=''>Offhand</option>
+                                        <option key='default' value='none'>Offhand</option>
                                     {weapons.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value.name}>{value.name}</option>);
                                     })}
@@ -38,7 +38,7 @@ class GearSetsComp extends React.Component {
                             <div className="w3-quarter">
                             <select defaultValue={config.tp.gear.ammo.name} style={{width: '99%'}} className='w3-select'
                                     onChange={(e) => update(e)} id='ammo set1 tp'>
-                                    <option key='default' value=''>Ammo</option>
+                                    <option key='default' value='none'>Ammo</option>
                                     {gearList.ammo.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value.name}>{value.name}</option>);
                                     })}

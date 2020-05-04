@@ -107,6 +107,7 @@ class Calculator {
         let enSpell=0;
         let relicAdd=0;
         let empyreanAdd=0;
+        let attack= 8 + this.player.katanaSkill;
         avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
         avgHits = parseFloat(avgHits.toFixed(3), 10)
         return {avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell, relicAdd, empyreanAdd}
@@ -124,6 +125,7 @@ class Calculator {
         let avgDamage=0;
         let critRate=0;
         let enSpell=0;
+        let attack=0;
         avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
         avgHits = parseFloat(avgHits.toFixed(3), 10)
         return {avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell}
@@ -137,9 +139,9 @@ class Calculator {
         let daken = this.player.daken + this.player.dakenBonus + set.daken
         let tpPerHit = 0
         let avgHits = parseFloat((1*hitRate*(daken/100)).toFixed(3), 10)
-        // Skill + 8, + 75% STR, + Sange Attk(relic body, no thanks) + Minuet Attack + Geo Attack + rAttackBonus(Gifts) + Gear rAttack 
+        // Skill + 8, + 100% STR, + Sange Attk(relic body, no thanks) + Minuet Attack + Geo Attack + rAttackBonus(Gifts) + Gear rAttack 
         let attack = this.player.throwingSkill + set.gear.ammo.throwingSkill + 8
-        attack += Math.floor(this.player.str * .75, 1) + (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
+        attack += this.player.str + (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
             (this.buffs.buffs.brd.minuetFour ? 112 + (this.buffs.buffs.brd.minuetPlus*11.25) + 45 : 0) +
             (this.buffs.buffs.brd.minuetThree ? 96 + (this.buffs.buffs.brd.minuetPlus*9.5) + 45 : 0) + this.player.rAttackBonus + 
             (this.buffs.buffs.brd.honorMarch ? 168 + (Math.min(this.buffs.buffs.brd.marchPlus, 4)*16) : 0)
@@ -210,6 +212,7 @@ class Calculator {
 
     isEmpty(el){
         if(el == null) return true
+        if(el.name && el.name === 'none') return true
         if(typeof(el) === 'string') return el.length  === 0
         for(var key in el) if(el.hasOwnProperty(key)) return false
         return true

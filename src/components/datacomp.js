@@ -63,7 +63,7 @@ class DataComp extends React.Component {
                                     Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                    <br />
+                                    {model.isEmpty(model.gearSets.tp.gear.mainhand.name) ? 'H2H' : model.gearSets.tp.gear.mainhand.name}<br />
                                     {handOne.avgPdif}<br />
                                     {handOne.avgCritPdif}<br />
                                     {handOne.hitRate * 100}%<br />
@@ -84,7 +84,7 @@ class DataComp extends React.Component {
                                     Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                    <br />
+                                    {model.isEmpty(model.gearSets.tp.gear.offhand.name) ? '' : model.gearSets.tp.gear.offhand.name}<br />
                                     {handTwo.avgPdif}<br />
                                     {handTwo.avgCritPdif}<br />
                                     {handTwo.hitRate * 100}%<br />
@@ -105,7 +105,7 @@ class DataComp extends React.Component {
                                     Avg Hits/Round:<br />
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                    {model.isEmpty(model.gearSets.tp.gear.ammo) ? 'No Shuriken' : '' }<br />
+                                    {model.isEmpty(model.gearSets.tp.gear.ammo) ? 'No Shuriken' : model.gearSets.tp.gear.ammo.name }<br />
                                     {shuriken.avgPdif}<br />
                                     {shuriken.avgCritPdif}<br />
                                     {shuriken.hitRate * 100}%<br />
@@ -135,8 +135,8 @@ class DataComp extends React.Component {
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                         <b>From 0TP to WS</b><br />
                                         Avg TP per Round: <br />
-                                        Avg Rounds 0 to WS: <br />
-                                        Avg Time 0 to WS: <br />
+                                        Avg Rounds to WS: <br />
+                                        Avg Time to WS: <br />
                                         Avg TP Total @ WS: 
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
@@ -157,6 +157,42 @@ class DataComp extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px', marginTop: '8px'}}>
+                            <h5 style={{margin: '0px 3px'}}><b>Weapon Skill Avgs</b></h5>
+                            <div className="w3-section w3-row-padding">
+                                <b>Chosen WS: </b>{model.playStyle.mainWs}<br />
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        Total WSC: <br />
+                                        Avg Hits/Main: <br />
+                                        Avg Hits/Off:
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        <br />
+                                        <br />
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                                <div className="w3-third">
+                                    <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        {/* More Data Space for future pertinent fields */}
+                                    </div>
+                                    <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
