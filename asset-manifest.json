@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/nin-dmg/static/css/main.6cae427c.chunk.css",
-    "main.js": "/nin-dmg/static/js/main.a35c4ad2.chunk.js",
-    "main.js.map": "/nin-dmg/static/js/main.a35c4ad2.chunk.js.map",
+    "main.js": "/nin-dmg/static/js/main.d4211460.chunk.js",
+    "main.js.map": "/nin-dmg/static/js/main.d4211460.chunk.js.map",
     "runtime-main.js": "/nin-dmg/static/js/runtime-main.87168b30.js",
     "runtime-main.js.map": "/nin-dmg/static/js/runtime-main.87168b30.js.map",
     "static/css/2.0fba4bd8.chunk.css": "/nin-dmg/static/css/2.0fba4bd8.chunk.css",
     "static/js/2.cb74f00b.chunk.js": "/nin-dmg/static/js/2.cb74f00b.chunk.js",
     "static/js/2.cb74f00b.chunk.js.map": "/nin-dmg/static/js/2.cb74f00b.chunk.js.map",
     "index.html": "/nin-dmg/index.html",
-    "precache-manifest.70e016860cbe3d181076232e31bf60f7.js": "/nin-dmg/precache-manifest.70e016860cbe3d181076232e31bf60f7.js",
+    "precache-manifest.cce7678b3846cb6a2760d0bc36b72db0.js": "/nin-dmg/precache-manifest.cce7678b3846cb6a2760d0bc36b72db0.js",
     "service-worker.js": "/nin-dmg/service-worker.js",
     "static/css/2.0fba4bd8.chunk.css.map": "/nin-dmg/static/css/2.0fba4bd8.chunk.css.map",
     "static/css/main.6cae427c.chunk.css.map": "/nin-dmg/static/css/main.6cae427c.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.0fba4bd8.chunk.css",
     "static/js/2.cb74f00b.chunk.js",
     "static/css/main.6cae427c.chunk.css",
-    "static/js/main.a35c4ad2.chunk.js"
+    "static/js/main.d4211460.chunk.js"
   ]
 }
