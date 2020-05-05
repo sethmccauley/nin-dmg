@@ -104,9 +104,13 @@ class Calculator {
         let geoAttack=0;
         let berserkAttack= (this.player.subJob === 'warrior' && this.buffs.buffs.subJob.berserk) ? Math.floor(baseAttack*.25) : 0 ;
         let boostStr= this.buffs.buffs.whm.boostStr ? 25 : 0 ;
-        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor(this.buffs.buffs.cor.chaosValue * baseAttack) : 0 ;
+        let brdAttack= (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
+            (this.buffs.buffs.brd.minuetFour ? 112 + (this.buffs.buffs.brd.minuetPlus*11.25) + 45 : 0) +
+            (this.buffs.buffs.brd.minuetThree ? 96 + (this.buffs.buffs.brd.minuetPlus*9.5) + 45 : 0) + 
+            (this.buffs.buffs.brd.honorMarch ? 168 + (Math.min(this.buffs.buffs.brd.marchPlus, 4)*16) : 0)
+        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor((this.buffs.buffs.cor.chaosValue/100) * baseAttack) : 0 ;
         let foodAttack=0;
-        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack;
+        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack + brdAttack;
         let avgPdif=0;
         let avgCritPdif=0;
         let hitRate=0.99;
@@ -120,6 +124,7 @@ class Calculator {
         let empyreanAdd=0;
         avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
         avgHits = parseFloat(avgHits.toFixed(3), 10)
+        console.log(baseAttack, boostStr, brdAttack, corAttack, foodAttack, attack)
         return {attack, avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell, relicAdd, empyreanAdd}
     }
 
@@ -134,9 +139,13 @@ class Calculator {
         let geoAttack=0;
         let berserkAttack= (this.player.subJob === 'warrior' && this.buffs.buffs.subJob.berserk) ? Math.floor(baseAttack*.25) : 0 ;
         let boostStr= this.buffs.buffs.whm.boostStr ? 25 : 0 ;
-        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor(this.buffs.buffs.cor.chaosValue * baseAttack) : 0 ;
+        let brdAttack= (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
+            (this.buffs.buffs.brd.minuetFour ? 112 + (this.buffs.buffs.brd.minuetPlus*11.25) + 45 : 0) +
+            (this.buffs.buffs.brd.minuetThree ? 96 + (this.buffs.buffs.brd.minuetPlus*9.5) + 45 : 0) + 
+            (this.buffs.buffs.brd.honorMarch ? 168 + (Math.min(this.buffs.buffs.brd.marchPlus, 4)*16) : 0)
+        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor((this.buffs.buffs.cor.chaosValue/100) * baseAttack) : 0 ;
         let foodAttack=0;
-        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack;
+        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack + brdAttack;
         let avgPdif=0;
         let avgCritPdif=0;
         let hitRate=0.95;
@@ -160,11 +169,17 @@ class Calculator {
         let tpPerHit = 0
         let avgHits = parseFloat((1*hitRate*(daken/100)).toFixed(3), 10)
         // Skill + 8, + 100% STR, + Sange Attk(relic body, no thanks) + berserk + Minuet Attack + Geo Attack + rAttackBonus(Gifts) + Gear rAttack 
-        let attack = this.player.throwingSkill + set.gear.ammo.throwingSkill + 8
-        attack += this.player.str + (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
+        let baseAttack = this.player.throwingSkill + set.gear.ammo.throwingSkill + 8 + (this.player.str + set.str) + this.player.rAttackBonus + set.rAttack
+        let boostStr= this.buffs.buffs.whm.boostStr ? 25 : 0 ;
+        let brdAttack = (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
             (this.buffs.buffs.brd.minuetFour ? 112 + (this.buffs.buffs.brd.minuetPlus*11.25) + 45 : 0) +
-            (this.buffs.buffs.brd.minuetThree ? 96 + (this.buffs.buffs.brd.minuetPlus*9.5) + 45 : 0) + this.player.rAttackBonus + 
+            (this.buffs.buffs.brd.minuetThree ? 96 + (this.buffs.buffs.brd.minuetPlus*9.5) + 45 : 0) + 
             (this.buffs.buffs.brd.honorMarch ? 168 + (Math.min(this.buffs.buffs.brd.marchPlus, 4)*16) : 0)
+        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor((this.buffs.buffs.cor.chaosValue/100) * baseAttack) : 0 ;
+        let geoAttack= 0
+        let foodAttack= 0
+        let berserkAttack= 0
+        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack + brdAttack;
         return {avgPdif, avgCritPdif, hitRate, avgHits , avgDamage: 0, tpPerHit, attack}
     }
 

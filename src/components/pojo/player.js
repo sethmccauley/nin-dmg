@@ -80,7 +80,9 @@ export default class Player {
         this.mAttackBonus = 0
         const pointMap = [
             {points: 10, gift: 'pAttackBonus', value: 10},
+            {points: 10, gift: 'rAttackBonus', value: 10},
             {points: 30, gift: 'pAccuracyBonus', value: 8},
+            {points: 30, gift: 'rAccuracyBonus', value: 8},
             {points: 45, gift: 'mAttackBonus', value: 4},
             {points: 80, gift: 'mAccuracyBonus', value: 7},
             {points: 150, gift: 'dakenBonus', value: 2},
@@ -108,10 +110,11 @@ export default class Player {
             {points: 2000, gift: 'dakenBonus', value: 5},
         ]
         pointMap.forEach((value) => {
-            if(this.jobPoints > value.points){
+            if(jobPoints > value.points){
                 this[value.gift] += value.value
             }
         })
         this.pAttackBonus += this.subJob === 'warrior' ? 10 : 0
+        this.rAttackBonus += this.subJob === 'warrior' ? 10 : 0
     }
 }

@@ -105,7 +105,6 @@ class App extends React.Component {
         }
         if(buffChanges[1] === 'hasteTwo' && e.target.checked === true) buffs.buffs.mage.hasteOne = false
         if(buffChanges[1] === 'hasteOne' && e.target.checked === true) buffs.buffs.mage.hasteTwo = false
-        console.log(buffs.buffs, playStyle)
         break
       case 'gearSets':
         let commands = e.target.id.split(' ')
