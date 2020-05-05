@@ -95,7 +95,18 @@ class Calculator {
     }
 
     handOneAvgStats(set){
-        //let cRatio=0;
+        let baseAttack= 8 + (set.gear.mainhand.type === 'katana' ? this.player.katanaSkill : 0) + 
+            (set.gear.mainhand.type === 'dagger' ? this.player.daggerSkill : 0) +
+            (set.gear.mainhand.type === 'sword' ? this.player.swordSkill : 0) + 
+            (!this.isEmpty(set.gear.mainhand) ? set.gear.mainhand.combatSkill : 0 ) +
+            this.player.str + this.player.pAttackBonus + set.attack + set.str
+        // Multiplicative Boosts >> Berserk >> Geo Buffs >> COR Buffs >> Food
+        let geoAttack=0;
+        let berserkAttack= (this.player.subJob === 'warrior' && this.buffs.buffs.subJob.berserk) ? Math.floor(baseAttack*.25) : 0 ;
+        let boostStr= this.buffs.buffs.whm.boostStr ? 25 : 0 ;
+        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor(this.buffs.buffs.cor.chaosValue * baseAttack) : 0 ;
+        let foodAttack=0;
+        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack;
         let avgPdif=0;
         let avgCritPdif=0;
         let hitRate=0.99;
@@ -107,15 +118,25 @@ class Calculator {
         let enSpell=0;
         let relicAdd=0;
         let empyreanAdd=0;
-        let attack= 8 + this.player.katanaSkill;
         avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
         avgHits = parseFloat(avgHits.toFixed(3), 10)
-        return {avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell, relicAdd, empyreanAdd}
+        return {attack, avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell, relicAdd, empyreanAdd}
     }
 
     handTwoAvgStats(set){
         if(!this.isEmpty(set.gear.mainhand) && this.isEmpty(set.gear.offhand)) return {avgPdif: 0, avgCritPdif: 0, hitRate: 0, avgHits: 0, avgDamage: 0, tpPerHit: 0}
-        //let cRatio=0;
+        let baseAttack= 8 + (set.gear.mainhand.type === 'katana' ? this.player.katanaSkill : 0) + 
+            (set.gear.offhand.type === 'dagger' ? this.player.daggerSkill : 0) +
+            (set.gear.offhand.type === 'sword' ? this.player.swordSkill : 0) + 
+            (!this.isEmpty(set.gear.offhand) ? set.gear.offhand.combatSkill : 0 ) +
+            this.player.pAttackBonus + set.attack + Math.floor((set.str + this.player.str)*.5)
+        // Multiplicative Boosts >> Berserk >> Geo Buffs >> COR Buffs
+        let geoAttack=0;
+        let berserkAttack= (this.player.subJob === 'warrior' && this.buffs.buffs.subJob.berserk) ? Math.floor(baseAttack*.25) : 0 ;
+        let boostStr= this.buffs.buffs.whm.boostStr ? 25 : 0 ;
+        let corAttack= this.buffs.buffs.cor.chaosRoll ? Math.floor(this.buffs.buffs.cor.chaosValue * baseAttack) : 0 ;
+        let foodAttack=0;
+        let attack=baseAttack + geoAttack + berserkAttack + boostStr + corAttack + foodAttack;
         let avgPdif=0;
         let avgCritPdif=0;
         let hitRate=0.95;
@@ -125,10 +146,9 @@ class Calculator {
         let avgDamage=0;
         let critRate=0;
         let enSpell=0;
-        let attack=0;
         avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
         avgHits = parseFloat(avgHits.toFixed(3), 10)
-        return {avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell}
+        return {attack, avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell}
     }
 
     throwingAvgStats(set){
@@ -139,7 +159,7 @@ class Calculator {
         let daken = this.player.daken + this.player.dakenBonus + set.daken
         let tpPerHit = 0
         let avgHits = parseFloat((1*hitRate*(daken/100)).toFixed(3), 10)
-        // Skill + 8, + 100% STR, + Sange Attk(relic body, no thanks) + Minuet Attack + Geo Attack + rAttackBonus(Gifts) + Gear rAttack 
+        // Skill + 8, + 100% STR, + Sange Attk(relic body, no thanks) + berserk + Minuet Attack + Geo Attack + rAttackBonus(Gifts) + Gear rAttack 
         let attack = this.player.throwingSkill + set.gear.ammo.throwingSkill + 8
         attack += this.player.str + (this.buffs.buffs.brd.minuetFive ? 124 + (this.buffs.buffs.brd.minuetPlus*12.25) + 45 : 0) +
             (this.buffs.buffs.brd.minuetFour ? 112 + (this.buffs.buffs.brd.minuetPlus*11.25) + 45 : 0) +

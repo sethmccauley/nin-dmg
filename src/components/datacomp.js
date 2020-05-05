@@ -64,7 +64,7 @@ class DataComp extends React.Component {
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.mainhand.name) ? 'H2H' : model.gearSets.tp.gear.mainhand.name}<br />
-                                    <br />
+                                    {handOne.attack}<br />
                                     {handOne.avgPdif}<br />
                                     {handOne.avgCritPdif}<br />
                                     {handOne.hitRate * 100}%<br />
@@ -85,7 +85,7 @@ class DataComp extends React.Component {
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.offhand.name) ? '' : model.gearSets.tp.gear.offhand.name}<br />
-                                    <br />
+                                    {handTwo.attack}<br />
                                     {handTwo.avgPdif}<br />
                                     {handTwo.avgCritPdif}<br />
                                     {handTwo.hitRate * 100}%<br />
@@ -161,7 +161,7 @@ class DataComp extends React.Component {
                         <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px', marginTop: '8px'}}>
                             <h5 style={{margin: '0px 3px'}}><b>Weapon Skill Avgs</b></h5>
                             <div className="w3-section w3-row-padding">
-                                <b>Chosen WS: </b>{model.playStyle.mainWs}<br />
+                                <b>Chosen WS: </b>{model.playStyle.mainWs}<br /><br />
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                         Total WSC: <br />

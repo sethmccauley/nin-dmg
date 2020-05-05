@@ -4,11 +4,11 @@
     {"name": "Fudo Masamune C","type": "katana", "combatSkill": 269, "hp": 150, "accuracy": 50, "rAccuracy": 50, "mAccuracy": 50, "mDamage": 186, "damage": 161, "delay": 222},
     {"name": "Gokotai","type": "katana", "combatSkill": 250, "mdamage": 217,"accuracy": 40, "attack": 30, "rAccuracy": 40, "dex": 15, "agi": 15, "int": 15, "mAttackBonus": 16, "mAccuracy": 40, "damage": 157, "delay": 227},
     {"name": "Heishi Shorinken","type": "katana", "combatSkill": 269, "mDamage": 186, "storeTp": 10, "tpBonus": 500, "damage": 159, "delay": 227},
-    {"name": "Heishi Shorinken Aug","type": "katana", "combatSkill": 269, "accuracy": 30, "mAccuracy": 30, "mDamage": 186, "storeTp": 10, "tpBonus": 500, "damage": 166, "delay": 227, "bladeShunDamage": 0.1},
+    {"name": "Heishi Shorinken R15","type": "katana", "combatSkill": 269, "accuracy": 30, "mAccuracy": 30, "mDamage": 186, "storeTp": 10, "tpBonus": 500, "damage": 166, "delay": 227, "bladeShunDamage": 0.1},
     {"name": "Ochu Aug","type": "katana", "combatSkill": 242, "str": 22, "dex": 22, "vit": 12, "agi": 12, "int": 12, "mnd": 12, "chr": 12, "accuracy": 20, "rAccuracy": 20, "damage": 135, "delay": 227},
     {"name": "Kannagi", "type": "katana", "combatSkill": 269, "agi": 50, "damage": 148, "delay": 210, "mDamage": 186, "afterMath": "empyrean"},
-    {"name": "Kannagi Aug", "type": "katana", "combatSkill": 269, "agi": 70, "dex": 20, "damage": 153, "delay": 210, "afterMath": "empyrean", "bladeHiDamage": 10},
+    {"name": "Kannagi R15", "type": "katana", "combatSkill": 269, "agi": 70, "dex": 20, "damage": 153, "delay": 210, "afterMath": "empyrean", "bladeHiDamage": 10},
     {"name": "Kikoku", "type": "katana", "combatSkill": 269, "attack": 60, "damage": 148, "delay": 210, "mDamage": 186, "afterMath": "relic", "bladeMetsuDamage": 40, "otd": 0.16},
-    {"name": "Kikoku Aug", "type": "katana", "combatSkill": 269, "attack": 60, "damage": 156, "delay": 210, "mDamage": 186, "afterMath": "relic", "bladeMetsuDamage": 68, "otd": 0.16},
+    {"name": "Kikoku R15", "type": "katana", "combatSkill": 269, "attack": 60, "damage": 156, "delay": 210, "mDamage": 186, "afterMath": "relic", "bladeMetsuDamage": 68, "otd": 0.16},
     {"name": "Tauret","type": "dagger", "combatSkill": 250, "dex": 15, "int": 15, "mnd": 15, "accuracy": 40, "attack": 30, "mAccuracy": 40, "mAttackBonus": 16, "mDamage": 217, "damage": 125, "delay": 180}
 ]

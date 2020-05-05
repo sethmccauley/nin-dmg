@@ -11,11 +11,13 @@ export default class Buffs {
                 berserk: false,
                 aggressor: false,
                 hasteSamba: false,
+                hasteSambaValue: 5,
             },
             mage: {
                 hasteOne: false,
                 hasteTwo: true,
-                dia: 0
+                dia: false,
+                diaValue: 0
             },
             whm: {
                 enhancingSkill: 500,
@@ -45,19 +47,19 @@ export default class Buffs {
                 honorMarch: true,
                 advancingMarch: false,
                 victoryMarch: false,
-                minuetPlus: 7,
+                minuetPlus: 8,
                 minuetMerits: 5,
                 minuetFive: false,
                 minuetFour: false,
                 minuetThree: false,
-                madrigalPlus: 7,
+                madrigalPlus: 9,
                 madrigalMerit: 5,
                 swordMadrigal: false,
                 bladeMadrigal: false,
             },
             cor: {
                 chaosRoll: false,
-                chaosValue: 70,
+                chaosValue: 56.2,
                 hunterRoll: false,
                 hunterValue: 75,
                 fighterRoll: false,

@@ -112,5 +112,6 @@ export default class Player {
                 this[value.gift] += value.value
             }
         })
+        this.pAttackBonus += this.subJob === 'warrior' ? 10 : 0
     }
 }
