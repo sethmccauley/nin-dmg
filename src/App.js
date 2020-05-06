@@ -165,7 +165,7 @@ class App extends React.Component {
       </header>
       <main className="App-main">
           <Previous action={() => this.prevStep()} step={current}/>
-          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px',minHeight: '500px', width: '100vw',order: '2'}}>
+          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px',minHeight: '500px', width: '100%',order: '2'}}>
             {mountThis}
           </div>
           <Next action={() => this.nextStep()} step={current} />
