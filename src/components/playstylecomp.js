@@ -9,8 +9,7 @@ class PlayStyleComp extends React.Component {
     render() {
         const { style, update, buffs } = this.props;
         return(
-            <div className="w3-container w3-round App-playstyle">
-                <Heading heading="Play Style"/>
+            <div className="w3-container w3-round">
                 <div className='w3-container w3-left-align'>
                     <div id="buffs"><h5><b>Buffs</b></h5>
                         <div className='w3-container'>
@@ -19,9 +18,9 @@ class PlayStyleComp extends React.Component {
                                     <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px'}}>
                                         <b>Self</b><br />
                                         <div className="w3-quarter">
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.self.kakkaIchi} label="Kakka: Ichi" id="self kakkaIchi" onChange={(e) => update(e)}/>Kakka: Ichi <br />
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.self.sange} label="Sange" id="self sange" onChange={(e) => update(e)}/>Sange <br />
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.self.innin} label="Innin" id="self innin" onChange={(e) => update(e)}/>Innin
+                                            <input type="checkbox" className="checkBox" style={{padding:'5px',margin:'3px'}} checked={buffs.buffs.self.kakkaIchi} label="Kakka: Ichi" id="self kakkaIchi" onChange={(e) => update(e)}/>Kakka: Ichi <br />
+                                            <input type="checkbox" className="checkBox" style={{padding:'5px',margin:'3px'}} checked={buffs.buffs.self.sange} label="Sange" id="self sange" onChange={(e) => update(e)}/>Sange <br />
+                                            <input type="checkbox" className="checkBox" style={{padding:'5px',margin:'3px'}} checked={buffs.buffs.self.innin} label="Innin" id="self innin" onChange={(e) => update(e)}/>Innin
                                         </div>
                                         <div className="w3-quarter">
 
@@ -73,12 +72,12 @@ class PlayStyleComp extends React.Component {
                                         </div>
                                         <div className="w3-quarter">
                                             <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.brd.honorMarch} id="brd honorMarch" onChange={(e) => update(e)}/>Honor March <br />
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.cor.victoryMarch} id="brd victoryMarch" onChange={(e) => update(e)}/>Victory March<br />
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.cor.advancingMarch} id="brd advancingMarch" onChange={(e) => update(e)}/>Advancing March
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.brd.victoryMarch} id="brd victoryMarch" onChange={(e) => update(e)}/>Victory March<br />
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.brd.advancingMarch} id="brd advancingMarch" onChange={(e) => update(e)}/>Advancing March
                                         </div>
                                         <div className="w3-quarter">
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.cor.swordMadrigal} id="brd swordMadrigal" onChange={(e) => update(e)}/>Sword Madrigal<br />
-                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.cor.bladeMadrigal} id="brd bladeMadrigal" onChange={(e) => update(e)}/>Blade Madrigal
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.brd.swordMadrigal} id="brd swordMadrigal" onChange={(e) => update(e)}/>Sword Madrigal<br />
+                                            <Checkbox style={{padding:'5px',marginBottom:'3px'}} checked={buffs.buffs.brd.bladeMadrigal} id="brd bladeMadrigal" onChange={(e) => update(e)}/>Blade Madrigal
                                         </div>
                                     </div>
                                     <div className='w3-row-padding w3-pale-blue w3-round-small w3-border' style={{padding: '4px'}}>

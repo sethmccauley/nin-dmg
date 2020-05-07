@@ -5,10 +5,9 @@ class GearSetsComp extends React.Component {
     render() {
         const { weapons, gearList, update, config } = this.props;
         return(
-            <div className="w3-container w3-round App-gearsets">
-                <Heading heading="Gear Sets"/>
+            <div className="w3-container w3-round">
                 <div className='w3-container w3-left-align'>
-                    <hr style={{border: '1px dashed teal'}}/>
+
                     <div className="w3-row" id="set1">
                         <div id="tp1"><b>TP</b><br />
                             <div className="w3-quarter">

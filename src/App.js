@@ -4,15 +4,13 @@ import PlayStyleComp from './components/playstylecomp.js';
 import GearSetsComp from './components/gearsetscomp.js';
 import DataComp from './components/datacomp.js';
 import Calculator from './components/calculator.js';
-import Previous from './components/previous.js';
-import Next from './components/next.js';
 import Buffs from './components/pojo/buffs.js';
 import Player from './components/pojo/player.js';
 import GearSet from './components/pojo/gearset.js';
+import Navbar from './components/navbar.js';
 import gear from './components/datafiles/gear.json';
 import weaponsList from './components/datafiles/weapons.json';
 import './App.css';
-import 'font-awesome/css/font-awesome.min.css';
 import PlayStyle from './components/pojo/playstyle.js';
 
 class App extends React.Component {
@@ -35,6 +33,12 @@ class App extends React.Component {
     const { current } = this.state;
     this.setState({
       current: current + 1
+    })
+  }
+
+  setCurrent = (k) => {
+    this.setState({
+      current: k
     })
   }
 
@@ -137,6 +141,16 @@ class App extends React.Component {
     })
   }
 
+  save(){
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.damageModel))
+    let anchorNode = document.createElement('a');
+    anchorNode.setAttribute('href', dataStr);
+    anchorNode.setAttribute('download', 'setup.json');
+    document.body.appendChild(anchorNode);
+    anchorNode.click();
+    anchorNode.remove();
+  }
+
   mountComponent(step){
     const { player, playStyle, gearSets, buffs, damageModel } = this.state
     switch(step){
@@ -158,21 +172,20 @@ class App extends React.Component {
     return (
     <div className="App">
       <header className="App-header">
-        <div className="w3-content w3-section w3-threequarter bgImage" style={{minWidth: '600px', minHeight: '100px'}}>
+        <div className="w3-content w3-section bgImage" style={{minWidth: '700px',minHeight: '130px'}}>
           <h2 className="w3-left-align" style={{fontWeight: '600', marginTop: '30px', marginBottom: '0px'}}>FFXI - Ninja Gearset Utility</h2>
           <p className="w3-left-align w3-medium" style={{margin: '0px'}}>"An expiriment." - Langly of Quetzalcoatl</p>
         </div>
       </header>
       <main className="App-main">
-          <Previous action={() => this.prevStep()} step={current}/>
-          <div className="w3-content w3-section w3-threequarter w3-border-black w3-round" style={{flex: '1',minWidth: '980px',minHeight: '500px', width: '100%',order: '2'}}>
-            {mountThis}
-          </div>
-          <Next action={() => this.nextStep()} step={current} />
+        <div className="App-player w3-round-small" style={{minWidth: '980px', width: '980px',minHeight: '500px'}}>
+          <Navbar activeIndex={current} setCurrent={(i) => this.setCurrent(i)} save={() => this.save()} load={() => console.log('load')}/>
+          {mountThis}
+        </div>
       </main>
       <footer>
         <div className='w3-container'>
-          <div id='footerSpacer' style={{height: '100px'}}></div>
+          <div id='footerSpacer' style={{height: '20px'}}></div>
         </div>
       </footer>
     </div>

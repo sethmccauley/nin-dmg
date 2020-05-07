@@ -10,8 +10,7 @@ class DataComp extends React.Component {
         const multiStats = model.getTpInfluences(model.gearSets.tp)
         const round = model.attackRoundStats()
         return(
-            <div className="w3-container w3-round App-data">
-                <Heading heading="Data Summary"/>
+            <div className="w3-container w3-round">
                 <div className='w3-container'>
                     <div className='w3-left-align' style={{padding: '3px', fontSize: '.9em'}}>
 
@@ -159,7 +158,7 @@ class DataComp extends React.Component {
                         </div>
 
                         <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px', marginTop: '8px'}}>
-                            <h5 style={{margin: '0px 3px'}}><b>Weapon Skill Avgs</b></h5>
+                            <h5 style={{margin: '0px 3px'}}><b>Weapon Skill Averages</b></h5>
                             <div className="w3-section w3-row-padding">
                                 <b>Chosen WS: </b>{model.playStyle.mainWs}<br /><br />
                                 <div className="w3-third">

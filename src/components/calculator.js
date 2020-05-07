@@ -74,7 +74,7 @@ class Calculator {
         }
         delayCollection.cap = delayCollection.total * .20
         delayCollection.reduced = delayCut * (1 - ((this.getMagicalHaste() + this.getEquipMentHaste(set))/1024))
-        
+        delayCollection.reduced = delayCollection.reduced < delayCollection.cap ? delayCollection.cap : delayCollection.reduced
         delayCollection.tp = this.getTpPerHit(set, delayCut, dwFlag) 
         return delayCollection
     }
