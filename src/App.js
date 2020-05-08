@@ -142,13 +142,68 @@ class App extends React.Component {
   }
 
   save(){
-    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state.damageModel))
+    const {player, buffs, gearSets, playStyle} = this.state.damageModel
+    const playerTransfer = ['jobPoints','race','level','subJob','food','critMerits','katanaSkillMerits','daggerSkillMerits','swordSkillMerits','throwingSkillMerits',
+    'strMerits','dexMerits','agiMerits','vitMerits','mndMerits','chrMerits','sangeMerits','inninMerits','inninJobPoints','bladeShunmerits']
+
+    let tempPlayerObject = {}
+    playerTransfer.forEach((value) => {
+      tempPlayerObject[value] = player[value]
+    })
+    let tempGearObject = {tp: {}, ws: {}}
+    tempGearObject.tp = gearSets.tp.gear
+    tempGearObject.ws = gearSets.ws.gear
+
+    let tempModelObject = {'player': tempPlayerObject, 'buffs': buffs, 'gearSets': tempGearObject, 'playStyle': playStyle}
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tempModelObject))
     let anchorNode = document.createElement('a');
     anchorNode.setAttribute('href', dataStr);
     anchorNode.setAttribute('download', 'setup.json');
     document.body.appendChild(anchorNode);
     anchorNode.click();
     anchorNode.remove();
+  }
+
+  load(e){
+    if(e.target.files.length < 1) return
+    let file = e.target.files[0];
+    let fr = new FileReader();
+    fr.onload = (event) => {
+      let result = JSON.parse(event.target.result)
+      let { player, buffs, gearSets, playStyle } = this.state
+      if(result.player) {
+        for(let key in result.player){
+          player[key] = result.player[key]
+        }
+        player.calculateBaseStats(player.race, player.subJob)
+        player.calculateGiftBonus(player.jobPoints)
+      }
+      if(result.buffs) {
+        for(let key in result.buffs){
+          buffs[key] = result.buffs[key]
+        }
+      }
+      if(result.gearSets) {
+        for(let key in result.gearSets){
+          gearSets[key]['gear'] = result.gearSets[key]
+        }
+        gearSets.tp.getTotal()
+        gearSets.ws.getTotal()
+      }
+      if(result.playStyle) {
+        for(let key in result.playStyle){
+          playStyle[key] = result.playStyle[key]
+        }
+      }
+      let newCalc = new Calculator(player, playStyle, gearSets, buffs)
+      this.setState({
+        player: player,
+        gearSets: gearSets,
+        buffs: buffs,
+        damageModel: newCalc
+      })
+    }
+    fr.readAsText(file)
   }
 
   mountComponent(step){
@@ -179,7 +234,7 @@ class App extends React.Component {
       </header>
       <main className="App-main">
         <div className="App-player w3-round-small" style={{minWidth: '980px', width: '980px',minHeight: '500px'}}>
-          <Navbar activeIndex={current} setCurrent={(i) => this.setCurrent(i)} save={() => this.save()} load={() => console.log('load')}/>
+          <Navbar activeIndex={current} setCurrent={(i) => this.setCurrent(i)} save={() => this.save()} load={(e) => this.load(e)}/>
           {mountThis}
         </div>
       </main>

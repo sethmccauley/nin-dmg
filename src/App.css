@@ -83,6 +83,7 @@
   background-color: rgb(41, 128, 185)!important;
   color:white!important;
   cursor: pointer;
+  transition: background-color 0.2s ease-in;
 }
 
 .selected {
@@ -104,6 +105,22 @@
 
 .w3-third {
   width: 33.3333%!important
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.hide {
+  position: absolute;
+  height: 40px;
+  width: 65px;
+  right: 5px;
+  top: 0px;
+  opacity: 0;
+  cursor: pointer;
 }
 
 /* W3.CSS 2.99 Mar 2017 by Jan Egil and Borge Refsnes */

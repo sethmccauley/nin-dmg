@@ -3,7 +3,6 @@ import Buffs from './pojo/buffs.js';
 import Player from './pojo/player.js';
 import PlayStyle from './pojo/playstyle.js';
 import GearSet from './pojo/gearset.js';
-import Target from './pojo/target.js';
 
 class Calculator {
     constructor(player, playStyle, gearSet, buffs, target){
@@ -11,7 +10,6 @@ class Calculator {
         this.playStyle = playStyle || new PlayStyle();
         this.gearSets = gearSet || {"tp": new GearSet(),"ws": new GearSet()}
         this.buffs = buffs || new Buffs();
-        this.target = target || new Target();
     }
 
     getMagicalHaste(){
@@ -130,7 +128,7 @@ class Calculator {
 
     handTwoAvgStats(set){
         if(!this.isEmpty(set.gear.mainhand) && this.isEmpty(set.gear.offhand)) return {avgPdif: 0, avgCritPdif: 0, hitRate: 0, avgHits: 0, avgDamage: 0, tpPerHit: 0}
-        let baseAttack= 8 + (set.gear.mainhand.type === 'katana' ? this.player.katanaSkill : 0) + 
+        let baseAttack= 8 + (set.gear.offhand.type === 'katana' ? this.player.katanaSkill : 0) + 
             (set.gear.offhand.type === 'dagger' ? this.player.daggerSkill : 0) +
             (set.gear.offhand.type === 'sword' ? this.player.swordSkill : 0) + 
             (!this.isEmpty(set.gear.offhand) ? set.gear.offhand.combatSkill : 0 ) +
@@ -157,6 +155,7 @@ class Calculator {
         let enSpell=0;
         avgHits = (0*(1-hitRate))+(1*hitRate*hitSpread.one)+(2*hitRate*hitSpread.two)+(3*hitRate*hitSpread.three)+(4*hitRate*hitSpread.four)+(5*hitRate*0)+(6**hitRate*0)+(7*hitRate*0)+(8*hitRate*0)
         avgHits = parseFloat(avgHits.toFixed(3), 10)
+        console.log('Hand Two: ',baseAttack, boostStr, brdAttack, corAttack, foodAttack, attack)
         return {attack, avgPdif, avgCritPdif, hitRate, avgHits, fStr, avgDamage, critRate, enSpell}
     }
 
