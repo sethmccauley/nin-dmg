@@ -1,5 +1,4 @@
 import React from 'react'
-import Heading from './heading'
 
 class GearSetsComp extends React.Component {
     render() {

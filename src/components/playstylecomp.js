@@ -1,5 +1,4 @@
 import React from 'react';
-import Heading from './heading';
 import { Checkbox } from '@material-ui/core'
 
 const aftermathTypes = ['Empyrean', 'Mythic', 'Relic']

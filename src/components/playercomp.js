@@ -90,34 +90,56 @@ class PlayerComp extends React.Component {
                         <b>Job Points:</b><br />
                         <label><b>Innin:</b> </label><input id='inninJobPoints' type='number' className='w3-input' style={{width: '25%'}} max='20' min='0' defaultValue={config.inninJobPoints < 21 ? config.inninJobPoints : 20 } onChange={(e) => update(e)}></input>
                     </div>
-                    <div className='w3-content w3-half w3-border-left w3-right-align w3-padding'>
+
+                    <div className='w3-half w3-border-left w3-center w3-row-padding'>
                         <h3>Stat Summary-</h3>
-                        <div className='w3-half w3-right-align'>
+                        <div className='w3-quarter w3-right-align'>
+                                <b>HP:</b><br />
+                                <b>STR:</b> <br />
+                                <b>DEX:</b> <br />
+                                <b>AGI:</b> <br />
+                                <b>VIT:</b> <br />
+                                <b>CHR:</b> <br />
+                                <b>MND:</b> <br />
+                                <b>INT:</b><br />
+                                <b>Crit%:</b>
+                        </div>
+                        <div className="w3-quarter w3-left-align">
+                                {config.hp}<br />
+                                {config.str}<br />
+                                {config.dex}<br />
+                                {config.agi}<br />
+                                {config.vit}<br />
+                                {config.chr}<br />
+                                {config.mnd}<br />
+                                {config.int}<br />
+                                {config.critMerits}<br />
+                        </div>
+                        <div className='w3-quarter w3-right-align'>
                             <p>
-                                <b>HP:</b> {config.hp}<br />
-                                <b>STR:</b> {config.str}<br />
-                                <b>DEX:</b> {config.dex}<br />
-                                <b>AGI:</b> {config.agi}<br />
-                                <b>VIT:</b> {config.vit}<br />
-                                <b>CHR:</b> {config.chr}<br />
-                                <b>MND:</b> {config.mnd}<br />
-                                <b>INT:</b> {config.int}<br />
-                                <b>Crit%:</b> {config.critMerits}<br />
+                                <b>Katana Skill:</b><br />
+                                <b>Dagger Skill:</b><br />
+                                <b>Sword Skill:</b><br />
+                                <b>Throwing Skill:</b><br />
+                                <b>Blade: Shun: </b><br />
+                                <b>Sange: </b><br />
+                                <b>Attack (Gift):</b> <br />
+                                <b>Accuracy (Gift):</b><br />
+                                <b>Daken+ (Gift):</b><br />
+                                <b>WSDmg (Gift):</b><br />
                             </p>
                         </div>
-                        <div className='w3-half w3-right-align'>
-                            <p>
-                                <b>Katana Skill:</b> {config.katanaSkill}<br />
-                                <b>Dagger Skill:</b> {config.daggerSkill}<br />
-                                <b>Sword Skill:</b> {config.swordSkill}<br />
-                                <b>Throwing Skill:</b> {config.throwingSkill}<br />
-                                <b>{config.bladeShunMerits > 0 ? 'Blade: Shun: ' : ''}</b>{config.bladeShunMerits > 0 ? config.bladeShunMerits : ''}<br />
-                                <b>{config.sangeMerits > 0 ? 'Sange: ' : ''}</b>{config.sangeMerits > 0 ? config.sangeMerits : ''}<br />
-                                <b>{config.jobPoints > 10 ? 'P.Attack (Gift):' : '' }</b> {config.jobPoints > 10 ? config.pAttackBonus : '' }<br />
-                                <b>{config.jobPoints > 30 ? 'P.Accuracy (Gift):' : '' }</b> {config.jobPoints > 30 ? config.pAccuracyBonus : '' }<br />
-                                <b>{config.jobPoints > 150 ? 'Daken+ (Gift):' : '' }</b> {config.jobPoints > 150 ? config.dakenBonus : '' }<br />
-                                <b>{config.jobPoints > 150 ? 'WSDmg (Gift):' : '' }</b> {config.jobPoints > 150 ? config.wsDmgBonus : '' }<br />
-                            </p>
+                        <div className='w3-quarter w3-left-align'>
+                            {config.katanaSkill}<br />
+                            {config.daggerSkill}<br />
+                            {config.swordSkill}<br />
+                            {config.throwingSkill}<br />
+                            {config.bladeShunMerits > 0 ? config.bladeShunMerits : ''}<br />
+                            {config.sangeMerits > 0 ? config.sangeMerits : ''}<br />
+                            {config.jobPoints > 10 ? config.pAttackBonus : '' }<br />
+                            {config.jobPoints > 30 ? config.pAccuracyBonus : '' }<br />
+                            {config.jobPoints > 150 ? config.dakenBonus : '' }<br />
+                            {config.jobPoints > 150 ? config.wsDmgBonus : '' }
                         </div>
                     </div>
                 </div>
