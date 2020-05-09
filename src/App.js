@@ -9,6 +9,7 @@ import Player from './components/pojo/player.js';
 import GearSet from './components/pojo/gearset.js';
 import Navbar from './components/navbar.js';
 import gear from './components/datafiles/gear.json';
+import mobs from './components/datafiles/mobs.json';
 import weaponsList from './components/datafiles/weapons.json';
 import './App.css';
 import PlayStyle from './components/pojo/playstyle.js';
@@ -96,7 +97,9 @@ class App extends React.Component {
               playStyle.afterMath.mythic = false;
               playStyle.afterMath[e.target.value] = true;
               
-            } 
+            } else if(buffChanges[1] === 'target') {
+              playStyle.target = mobs.find(value => value.name === e.target.value)
+            }
             else playStyle[buffChanges[1]][buffChanges[2]] = parseFloat(e.target.value, 10)
           }
           break
@@ -212,7 +215,7 @@ class App extends React.Component {
       case 1:
         return <PlayerComp config={player} update={this.handleChange('player')} />
       case 2:
-        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} update={this.handleChange('playStyle')}/>
+        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} targets={mobs} update={this.handleChange('playStyle')}/>
       case 3:
         return <GearSetsComp config={gearSets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
       case 4:

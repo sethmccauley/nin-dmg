@@ -1,16 +1,17 @@
 {
     "ammo": [
+        {"name": "Aurgelmir Orb +1", "type": "ammo","str":7,"dex":7,"vit":7,"attack":10,"storeTp":5},
+        {"name": "Cath Palug Stone", "type": "ammo", "dex": 10, "agi": 10, "accuracy": 15},
+        {"name": "Floestone", "type": "ammo", "str": 3, "int": 5, "attack": 10},
         {"name": "Hachiya Shuriken", "type":"shuriken", "throwingSkill": 215, "rAccuracy": 5, "damage": 90, "delay": 192},
         {"name": "Happo Shuriken", "type":"shuriken", "throwingSkill": 215, "accuracy": 5, "rAccuracy": 10, "critRate": 1, "damage": 98, "delay": 192},
         {"name": "Happo Shuriken +1", "type":"shuriken", "throwingSkill": 228, "accuracy": 6, "rAccuracy": 11, "critRate": 2, "damage": 99, "delay": 192},
+        {"name": "Jukukik Feather", "type":"ammo", "dex": 4},
         {"name": "Seki Shuriken", "type":"shuriken", "throwingSkill": 242, "attack": 13, "storeTp": 2, "damage": 101, "delay": 192},
         {"name": "Tokgakushi Shuriken", "type":"shuriken", "throwingSkill": 242, "vit": 3, "agi": 3, "attack": 5, "accuracy": 5, "rAccuracy": 10, "damage": 104, "delay": 192},
-        {"name": "Jukukik Feather", "type":"ammo", "dex": 4},
         {"name": "Seething Bomblet +1", "type":"ammo", "str": 5, "accuracy": 13, "attack": 13},
         {"name": "Yetshila", "type":"ammo", "critRate": 1, "critDamage": 5},
-        {"name": "Yetshila +1", "type":"ammo", "critRate": 2, "critDamage": 6},
-        {"name": "Cath Palug Stone", "type": "ammo", "dex": 10, "agi": 10, "accuracy": 15},
-        {"name": "Floestone", "type": "ammo", "str": 3, "int": 5, "attack": 10}
+        {"name": "Yetshila +1", "type":"ammo", "critRate": 2, "critDamage": 6}
     ],
     "head": [
         {"name": "Adhemar Bonnet +1 A","hp":41,"str":19,"dex":33,"vit":15,"agi":31,"int":14,"mnd":14,"chr":14,"accuracy":20,"attack":36,"rAttack":36,"tripleAttack":4,"haste":81,"critDamage":6},

@@ -1,5 +1,3 @@
-import Target from './target';
-
 export default class PlayStyle {
     constructor(name){
         this.name = name;
@@ -16,6 +14,6 @@ export default class PlayStyle {
             minimumTp: 1000,
         }
         this.food = '';
-        this.target = new Target();
+        this.target = {}
     }
 }

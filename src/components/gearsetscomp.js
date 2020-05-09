@@ -276,7 +276,7 @@ class GearSetsComp extends React.Component {
                             </div>
                             <div className="w3-quarter">
                                 <select value={config.ws.gear.waist.name} style={{width: '99%'}} className='w3-select'
-                                    onChange={(e) => update(e)} id='waist set1 ws1'>
+                                    onChange={(e) => update(e)} id='waist set1 ws'>
                                     <option key='default' value='none'>Waist</option>
                                     {gearList.waist.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value.name}>{value.name}</option>);

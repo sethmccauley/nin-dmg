@@ -5,7 +5,7 @@ const wsChoices = ["Blade: Rin", "Blade: Retsu", "Blade: Jin", "Blade: Ten", "Bl
 
 class PlayStyleComp extends React.Component {
     render() {
-        const { style, update, buffs } = this.props;
+        const { style, update, buffs, targets } = this.props;
         return(
             <div className="w3-container w3-round">
                 <div className='w3-container w3-left-align'>
@@ -96,34 +96,50 @@ class PlayStyleComp extends React.Component {
                             </div>
                         </div>
 
-                        <br /><h5><b>WS</b></h5><br />
+                        <br /><h5><b>WS</b></h5>
                         <div className='w3-row-padding w3-light-grey w3-round-small' style={{padding: '4px'}}>
-                            <div className="w3-third">
-                                <input type="checkbox" className="checkBox"  size="small" id="style afterMath keepActive" onChange={(e) => update(e)}/>Aftermath Active<br />
-                                <select className="w3-select" id='style afterMath type' onChange={(e) => update(e)} style={{width: '90%', marginLeft: '8px'}}>
+                            <div className="w3-quarter">
+                                <input type="checkbox" className="checkBox" value={style.afterMath.keepActive} size="small" id="style afterMath keepActive" onChange={(e) => update(e)}/>Aftermath Active<br />
+                                <select className="w3-select" id='style afterMath type' value={style.afterMath.relic ? '' : style.afterMath.empyrean ? '' : style.afterMath.mythic}onChange={(e) => update(e)} style={{width: '90%', marginLeft: '2px'}}>
                                     <option key='default' value='none'>Aftermath Type</option>
                                     {aftermathTypes.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value}>{value}</option>);
                                     })}
                                 </select>
                             </div>
-                            <div className="w3-third">
-                                <select className="w3-select" id='style mainWs' onChange={(e) => update(e)} style={{width: '90%', marginLeft: '8px'}}>
+                            <div className="w3-quarter">
+                                Main WeaponSkill:
+                                <select className="w3-select" id='style mainWs' value={style.mainWs} onChange={(e) => update(e)} style={{width: '90%', marginLeft: '2px'}}>
                                     <option key='default' value='none'>Main WeaponSkill</option>
                                     {wsChoices.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value}>{value}</option>);
                                     })}
-                                </select>
+                                </select><br />
                             </div>
-                            <div className="w3-third">
-                                Over TP Rounds:<br />
-                                <input className="w3-input" id="style tp overRounds" onChange={(e) => update(e)} style={{marginLeft: '8px', width: '200px'}} type="number" defaultValue={style.tp.overRounds} /><br />
+                            <div className="w3-quarter">
+                            Over TP Rounds:<br />
+                                <input className="w3-input" id="style tp overRounds" onChange={(e) => update(e)} style={{marginLeft: '2px', width: '200px'}} type="number" value={style.tp.overRounds} /><br />
                                 Minimum TP:<br />
-                                <input className="w3-input" id="style tp minimumTp" onChange={(e) => update(e)} style={{marginLeft: '8px', width: '200px'}} type="number" defaultValue={style.tp.minimumTp} /><br />
+                                <input className="w3-input" id="style tp minimumTp" onChange={(e) => update(e)} style={{marginLeft: '2px', width: '200px'}} type="number" value={style.tp.minimumTp} /><br />
+                            </div>
+                            <div className="w3-quarter">
                                 Save TP:<br />
-                                <input className="w3-input" id="style tp saveTp" onChange={(e) => update(e)} style={{marginLeft: '8px', width: '200px'}} type="number" defaultValue={style.tp.saveTp} /><br />
+                                <input className="w3-input" id="style tp saveTp" onChange={(e) => update(e)} style={{marginLeft: '2px', width: '200px'}} type="number" value={style.tp.saveTp} /><br />
                             </div>
                         </div>
+
+                        <h5><b>Target</b></h5>
+                        <div className='w3-row-padding w3-pale-blue w3-round-small' style={{padding: '4px'}}>
+                            <div className="w3-quarter">
+                                <select className="w3-select" id='style target' value={style.target.name} onChange={(e) => update(e)} style={{width: '90%', marginLeft: '2px'}}>
+                                    <option key='default' value='none'>None</option>
+                                    {targets.map((value, keyIndex) => { 
+                                        return(<option key={keyIndex} value={value.name}>{value.name}</option>);
+                                    })}
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
