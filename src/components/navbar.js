@@ -13,7 +13,7 @@ export class Navbar extends Component {
                         <div className={"w3-bar-item nav-div" + (activeIndex === 4 ? ' selected' : '')} id="dataNav" onClick={() => setCurrent(4)}>Data</div>
                     </div>
                     <div className="w3-bar-item" style={{float: 'right'}}>
-                        <button onClick={() => save()} className="w3-button w3-bar-item w3-animate w3-round w3-hover-light-blue" style={{height: '100%', border: '1px solid rgb(41, 128, 185)', margin: '0 6px',fontWeight: '500'}}>Save</button>
+                        <button onClick={() => save()} className="w3-button w3-bar-item w3-animate w3-round w3-hover-light-blue" style={{height: '100%', border: '1px solid rgb(41, 128, 185)', margin: '0 6px',fontWeight: '500',height: '39px'}}>Save</button>
                         <input type="file" onClick={(e) => e.target.value = null} onChange={(e) => load(e)} className="w3-input w3-bar-item w3-small w3-animate w3-round w3-hover-light-blue" style={{height: '39px',border: '1px solid rgb(41, 128, 185)', margin: '0 6px',fontWeight: '500'}} />
                     </div>
                 </div>
