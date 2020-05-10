@@ -36,7 +36,7 @@ class Calculator {
         let quadAttack = set.quadAttack
         let tripleAttack = set.tripleAttack
         let doubleAttack = set.doubleAttack + this.player.doubleAttack + (this.buffs.buffs.cor.fighterRoll ? this.buffs.buffs.cor.fighterValue : 0)
-        let daken = this.player.daken + this.player.dakenBonus + set.daken
+        let daken = Math.max((this.player.daken + this.player.dakenBonus + set.daken), (this.buffs.buffs.self.sange ? 100 : 0))
         let magicalHaste = this.getMagicalHaste()
         let gearHaste = this.getEquipMentHaste(set)
         let jaHaste = (this.buffs.buffs.dnc.hasteSamba ? this.buffs.buffs.dnc.hasteSambaValue : 0 )
@@ -258,11 +258,12 @@ class Calculator {
         let inninAcc = 0 + (this.buffs.buffs.self.innin ? 40 : 0 ) + (this.buffs.buffs.self.yonin ? -20 : 0 )
         let brdAcc = 0 + (this.buffs.buffs.brd.honorMarch ? 42 + Math.floor(Math.min(this.buffs.buffs.brd.marchPlus, 4)*4) : 0 )
         let corAcc = 0 + (this.buffs.buffs.cor.hunterRoll ? this.buffs.buffs.cor.hunterValue : 0 )
+        let geoAcc = 0
         let accuracy = 0 + corAcc + inninAcc + brdAcc + adjAcc + set.rAccuracy + this.player.rAccuracyBonus + 100 + (this.buffs.buffs.self.sange ? 100 : 0)
         let dAccuracy = (Math.floor((accuracy - targetEva)/2)/100) + .75
         let hitRate= Math.min(0.95, dAccuracy.toFixed(2))
 
-        let daken = this.player.daken + this.player.dakenBonus + set.daken
+        let daken = Math.max((this.player.daken + this.player.dakenBonus + set.daken), (this.buffs.buffs.self.sange ? 100 : 0) )
         let avgHits = parseFloat((1*hitRate*(daken/100)).toFixed(3), 10)
 
         // Skill + 8, + 100% STR, + Sange Attk(relic body, no thanks) + berserk + Minuet Attack + Geo Attack + rAttackBonus(Gifts) + Gear rAttack 
