@@ -17,7 +17,9 @@ export default class Buffs {
                 hasteOne: false,
                 hasteTwo: true,
                 dia: false,
-                diaValue: 0
+                diaValue: 0,
+                distract: false,
+                distractTwo: false,
             },
             whm: {
                 enhancingSkill: 500,
@@ -53,7 +55,7 @@ export default class Buffs {
                 minuetFour: false,
                 minuetThree: false,
                 madrigalPlus: 9,
-                madrigalMerit: 5,
+                madrigalMerits: 5,
                 swordMadrigal: false,
                 bladeMadrigal: false,
             },
