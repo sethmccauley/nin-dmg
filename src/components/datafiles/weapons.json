@@ -11,5 +11,6 @@
     {"name": "Kikoku", "type": "katana", "combatSkill": 269, "attack": 60, "damage": 148, "delay": 210, "mDamage": 186, "afterMath": "relic", "bladeMetsuDamage": 40, "otd": 0.16},
     {"name": "Kikoku R15", "type": "katana", "combatSkill": 269, "attack": 60, "damage": 156, "delay": 210, "mDamage": 186, "afterMath": "relic", "bladeMetsuDamage": 68, "otd": 0.16},
     {"name": "Tauret","type": "dagger", "combatSkill": 250, "dex": 15, "int": 15, "mnd": 15, "accuracy": 40, "attack": 30, "mAccuracy": 40, "mAttackBonus": 16, "mDamage": 217, "damage": 125, "delay": 180},
-    {"name": "Ternion +1","type": "dagger", "combatSkill": 228,"hp": 45, "agi": 15, "accuracy": 27,"tripleAttack": 4, "damage": 100, "delay": 175}
+    {"name": "Ternion +1","type": "dagger", "combatSkill": 228,"hp": 45, "agi": 15, "accuracy": 27,"tripleAttack": 4, "damage": 100, "delay": 175},
+    {"name": "Naegling","type":"sword","combatSkill": 250,"dex":15,"int":15,"mnd":15,"accuracy":40,"attack":30,"mAccuracy":40,"mAttackBonus":16,"damage":166,"delay":240}
 ]
