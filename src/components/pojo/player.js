@@ -14,12 +14,12 @@ export default class Player {
         this.vit= 0;
         this.mnd= 0;
         this.int= 0;
-        this.critMerits= 5;
         this.pdl= 0.1;
         this.katanaSkill= 276;
         this.throwingSkill= 276;
         this.daggerSkill= 230;
         this.swordSkill= 225;
+        this.h2hSkill = 300;
         this.dualWield= 35;
         this.doubleAttack= 0;
         this.tripleAttack= 0;

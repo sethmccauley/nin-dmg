@@ -3,9 +3,7 @@ export default class PlayStyle {
         this.name = name;
         this.afterMath = {
             keepActive: false,
-            relic: false,
-            mythic: false,
-            empyrean: false,
+            type: ''
         }
         this.mainWs = '';
         this.tp = {

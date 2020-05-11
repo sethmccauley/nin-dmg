@@ -92,12 +92,13 @@ class App extends React.Component {
           } else {
             if(buffChanges[1] === 'mainWs') playStyle.mainWs = e.target.value
             else if(buffChanges[1] === 'afterMath' && buffChanges[2] === 'type'){
-              playStyle.afterMath.empyrean = false;
-              playStyle.afterMath.relic = false;
-              playStyle.afterMath.mythic = false;
-              playStyle.afterMath[e.target.value] = true;
+              playStyle.afterMath.type = e.target.value;
               
             } else if(buffChanges[1] === 'target') {
+              if(e.target.value === 'none') {
+                playStyle.target = {name: 'none'} 
+                break
+              } 
               playStyle.target = mobs.find(value => value.name === e.target.value)
             }
             else playStyle[buffChanges[1]][buffChanges[2]] = parseFloat(e.target.value, 10)

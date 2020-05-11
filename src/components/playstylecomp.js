@@ -100,7 +100,7 @@ class PlayStyleComp extends React.Component {
                         <div className='w3-row-padding w3-light-grey w3-round-small' style={{padding: '4px'}}>
                             <div className="w3-quarter">
                                 <input type="checkbox" className="checkBox" value={style.afterMath.keepActive} size="small" id="style afterMath keepActive" onChange={(e) => update(e)}/>Aftermath Active<br />
-                                <select className="w3-select" id='style afterMath type' value={style.afterMath.relic ? '' : style.afterMath.empyrean ? '' : style.afterMath.mythic}onChange={(e) => update(e)} style={{width: '90%', marginLeft: '2px'}}>
+                                <select className="w3-select" id='style afterMath type' value={style.afterMath.type}onChange={(e) => update(e)} style={{width: '90%', marginLeft: '2px'}}>
                                     <option key='default' value='none'>Aftermath Type</option>
                                     {aftermathTypes.map((value, keyIndex) => { 
                                         return(<option key={keyIndex} value={value}>{value}</option>);

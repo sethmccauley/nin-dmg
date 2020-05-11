@@ -56,18 +56,22 @@ class DataComp extends React.Component {
                                     Attack: <br />
                                     Avg. Non-Crit pDif: <br />
                                     Avg. Crit pDif: <br />
+                                    Avg. Crit Rate: <br />
                                     Hit Rate: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
+                                    <b>Avg Damage/Round:</b>
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                    {model.isEmpty(model.gearSets.tp.gear.mainhand.name) ? 'H2H' : model.gearSets.tp.gear.mainhand.name}<br />
+                                    {model.isEmpty(model.gearSets.tp.gear.mainhand) ? 'H2H' : model.gearSets.tp.gear.mainhand.name}<br />
                                     {handOne.attack}<br />
                                     {handOne.avgPdif}<br />
                                     {handOne.avgCritPdif}<br />
+                                    {handOne.critRate}%<br />
                                     {handOne.hitRate * 100}%<br />
                                     {round.tpPerHit}<br />
                                     {handOne.avgHits}<br />
+                                    <b>{handOne.avgDamage}</b>
                                 </div>
                             </div>
 
@@ -77,18 +81,22 @@ class DataComp extends React.Component {
                                     Attack: <br />
                                     Avg. Non-Crit pDif: <br />
                                     Avg. Crit pDif: <br />
+                                    Avg. Crit Rate: <br />
                                     Hit Rate: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
+                                    <b>Avg Damage/Round:</b>
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.offhand.name) ? '' : model.gearSets.tp.gear.offhand.name}<br />
                                     {handTwo.attack}<br />
                                     {handTwo.avgPdif}<br />
                                     {handTwo.avgCritPdif}<br />
+                                    {handTwo.critRate}%<br />
                                     {handTwo.hitRate * 100}%<br />
                                     {round.tpPerHit}<br />
                                     {handTwo.avgHits}<br />
+                                    <b>{handTwo.avgDamage}</b>
                                 </div>
                             </div>
 
@@ -98,20 +106,27 @@ class DataComp extends React.Component {
                                     Attack: <br />
                                     Avg. Non-Crit pDif: <br />
                                     Avg. Crit pDif: <br />
+                                    Avg. Crit Rate: <br />
                                     Hit Rate: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
+                                    <b>Avg Damage/Round:</b>
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.ammo) ? 'No Shuriken' : model.gearSets.tp.gear.ammo.name }<br />
                                     {shuriken.attack}<br />
                                     {shuriken.avgPdif}<br />
                                     {shuriken.avgCritPdif}<br />
+                                    {shuriken.critRate}%<br />
                                     {shuriken.hitRate * 100}%<br />
                                     {round.shuriken}<br />
                                     {shuriken.avgHits}<br />
+                                    <b>{shuriken.avgDamage}</b>
                                 </div>
                             </div>
+                        </div>
+                        <div className="w3-right-align w3-light-grey w3-round-small" style={{paddingRight: '50px'}}>
+                            <b>Avg Total Damage/Round: {shuriken.avgDamage + handOne.avgDamage + handTwo.avgDamage}</b>
                         </div>
 
                         <div className="w3-row-padding w3-pale-blue w3-round-small w3-border" style={{padding: '4px', marginTop: '8px'}}>
@@ -163,8 +178,8 @@ class DataComp extends React.Component {
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                         Total WSC: <br />
-                                        Avg Hits/Main: <br />
-                                        Avg Hits/Off:
+                                        Avg. Hits/Mainhand: <br />
+                                        Avg. Hits/Offhand:
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                         <br />
@@ -173,8 +188,9 @@ class DataComp extends React.Component {
                                 </div>
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
-                                        <br />
-                                        <br />
+                                        WS Avg. TP:<br />
+                                        WS Avg. pDif:<br />
+                                        WS Dmg+:<br />
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                         <br />
@@ -183,7 +199,9 @@ class DataComp extends React.Component {
                                 </div>
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
-                                        {/* More Data Space for future pertinent fields */}
+                                        Relic Bonus:<br />
+                                        Empyrean Bonus:<br />
+                                        <b>Total Avg Damage:</b>
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     </div>
