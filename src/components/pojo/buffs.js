@@ -74,6 +74,8 @@ export default class Buffs {
                 tacticianValue: 50,
                 miserRoll: false,
                 miserValue: 200,
+                alliesRoll: false,
+                alliesValue: 30,
             },
             geo: {
                 bolster: false,
@@ -82,11 +84,13 @@ export default class Buffs {
                 torpor: false,
                 torporValue: 100,
                 frailty: false,
-                frailtyValue: 40,
+                frailtyValue: 41.8,
                 precision: false,
-                precisionValue: 75,
+                precisionValue: 100,
                 fury: false,
-                furyValue: 48,
+                furyValue: 61.7,
+                haste: false,
+                hasteValue: 40.9
             },
         }
     }

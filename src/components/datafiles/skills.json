@@ -1,5 +1,5 @@
-[
-    {"katana": [
+{
+    "katana": [
         {"name": "Blade: Rin", "type": "katana", "extraHits": 0, "offhandHits": 1, "str": 0.6, "dex": 0.6, "ftp1": 1, "ftp2": 1, "ftp3": 1, "ftpCarry": false, "crit0": 0.35, "crit1": 0.15, "crit2": 0.15},
         {"name": "Blade: Retsu", "type": "katana", "extraHits": 1, "offhandHits": 1, "str": 0.2, "dex": 0.6, "ftp1": 1, "ftp2": 1, "ftp3": 1, "ftpCarry": false},
         {"name": "Blade: Jin", "type": "katana", "extraHits": 2, "offhandHits": 1, "str": 0.3, "dex": 0.3, "ftp1": 1.375, "ftp2": 1.375, "ftp3": 1.375, "ftpCarry": true, "crit0": 0.10, "crit1": 0.10, "crit2": 0.15},
@@ -9,12 +9,12 @@
         {"name": "Blade: Metsu", "type": "katana", "extraHits": 0, "offhandHits": 1, "dex": 0.8, "ftp1": 5, "ftp2": 5, "ftp3": 5, "ftpCarry": false},
         {"name": "Blade: Hi", "type": "katana", "extraHits": 0, "offhandHits": 1, "agi": 0.8, "ftp1": 5, "ftp2": 5, "ftp3": 5, "ftpCarry": false, "crit0":0.15,"crit1":0.05,"crit2":0.05},
         {"name": "Blade: Shun", "type": "katana", "extraHits": 4, "offhandHits": 1, "dex": 0.85, "ftp1": 1, "ftp2": 1, "ftp3": 1, "ftpCarry": true,"att1":100,"att2":200}
-    ]},
-    {"dagger": [
+    ],
+    "dagger": [
         {"name": "Evisceration","type":"dagger","extraHits":4,"offhandHits":1,"dex":0.5,"ftp1":1.25,"ftp2":1.25,"ftp3":1.25,"ftpCarry":true,"crit0":0.10,"crit1":0.25,"crit2":0.5},
         {"name": "Exentorator","type":"dagger","extraHits":3,"offhandHits":1,"agi":0.85,"ftp1":1,"ftp2":1,"ftp3":1,"ftpCarry":true}
-    ]},
-    {"sword": [
+    ],
+    "sword": [
         {"name": "Savage Blade", "type": "sword","extraHits":1,"offhandHits":1,"str":0.5,"mnd":0.5,"ftp1":4,"ftp2":10.25,"ftp3":13.75,"ftpCarry":false }
-    ]}
-]
+    ]
+}

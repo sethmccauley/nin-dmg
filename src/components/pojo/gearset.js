@@ -47,6 +47,7 @@ export default class GearSet {
         this.critRate= 0;
         this.critDamage= 0;
         this.dualWield= 0;
+        this.tpBonus= 0;
         this.mainhand= {
             skill: 0,
             type: '',
@@ -59,7 +60,7 @@ export default class GearSet {
     getTotal(){
         let tempTotals = {}
         let catalogable = ['hp','str','dex','agi','vit','int','chr','mnd','attack','accuracy','rAttack','rAccuracy','mAccuracy','mDamage','mAttackBonus','throwingSkill',
-                            'doubleAttack','tripleAttack','quadAttack','storeTp','haste','wsDamage','regain','daken','pdl','critRate','critDamage','dualWield']
+                            'doubleAttack','tripleAttack','quadAttack','storeTp','haste','wsDamage','regain','daken','pdl','critRate','critDamage','dualWield','tpBonus']
         catalogable.forEach(value => {
             tempTotals[value] = 0
         })
@@ -71,7 +72,6 @@ export default class GearSet {
                         tempTotals[k] += parseFloat(v, 10);
                     }
                     if(key === 'mainhand' && k === 'mainhand'){
-                        console.log('hit')
                         for(const [i,e] of Object.entries(v)){
                             if(!tempTotals[i]) tempTotals[i] = 0
                             tempTotals[i] += parseFloat(e, 10);

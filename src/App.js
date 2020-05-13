@@ -8,6 +8,7 @@ import Buffs from './components/pojo/buffs.js';
 import Player from './components/pojo/player.js';
 import GearSet from './components/pojo/gearset.js';
 import Navbar from './components/navbar.js';
+import skills from './components/datafiles/skills.json';
 import gear from './components/datafiles/gear.json';
 import mobs from './components/datafiles/mobs.json';
 import weaponsList from './components/datafiles/weapons.json';
@@ -90,18 +91,21 @@ class App extends React.Component {
           if(e.target.type === 'checkbox') {
             playStyle[buffChanges[1]][buffChanges[2]] = e.target.checked
           } else {
-            if(buffChanges[1] === 'mainWs') playStyle.mainWs = e.target.value
-            else if(buffChanges[1] === 'afterMath' && buffChanges[2] === 'type'){
+            if(buffChanges[1] === 'mainWs') {
+              let getWs = skills[(gearSets.ws.gear.mainhand.type ? gearSets.ws.gear.mainhand.type : 'katana')].find((value) => {
+                return value.name === e.target.value
+              })
+              playStyle.mainWs = getWs
+            } else if(buffChanges[1] === 'afterMath' && buffChanges[2] === 'type'){
               playStyle.afterMath.type = e.target.value;
-              
             } else if(buffChanges[1] === 'target') {
               if(e.target.value === 'none') {
                 playStyle.target = {name: 'none'} 
                 break
               } 
               playStyle.target = mobs.find(value => value.name === e.target.value)
-            }
-            else playStyle[buffChanges[1]][buffChanges[2]] = parseFloat(e.target.value, 10)
+            } else 
+              playStyle[buffChanges[1]][buffChanges[2]] = parseFloat(e.target.value || 0, 10)
           }
           break
         }
@@ -109,16 +113,20 @@ class App extends React.Component {
         if(e.target.type === 'checkbox'){
           buffs.buffs[buffChanges[0]][buffChanges[1]] = e.target.checked
         } else {
-          buffs.buffs[buffChanges[0]][buffChanges[1]] = parseFloat(e.target.value, 10)
+          buffs.buffs[buffChanges[0]][buffChanges[1]] = parseFloat(e.target.value || 0, 10)
         }
         if(buffChanges[1] === 'hasteTwo' && e.target.checked === true) buffs.buffs.mage.hasteOne = false
         if(buffChanges[1] === 'hasteOne' && e.target.checked === true) buffs.buffs.mage.hasteTwo = false
+        if(buffChanges[1] === 'distract' && e.target.checked === true) buffs.buffs.mage.distractTwo = false
+        if(buffChanges[1] === 'distractTwo' && e.target.checked === true) buffs.buffs.mage.distract = false
         break
       case 'gearSets':
         let commands = e.target.id.split(' ')
         let foundItem = {}
+        let wFlag = false
         if(commands[0] === 'mainhand' || commands[0] === 'offhand'){
           foundItem = weaponsList.find((value) => value.name === e.target.value)
+          wFlag = true
         } else {
           let tempTable = commands[0]
           if(commands[0] === 'ring1' || commands[0] === 'ring2'){
@@ -131,6 +139,7 @@ class App extends React.Component {
         }
         if(e.target.value === 'none') foundItem = {name: 'none'}
         gearSets[commands[2]].gear[commands[0]]= foundItem
+        if(wFlag) gearSets[(commands[2] === 'tp') ? 'ws' : 'tp'].gear[commands[0]] = foundItem
         gearSets[commands[2]].getTotal()
         this.setState({
           gearSets: gearSets
@@ -174,36 +183,42 @@ class App extends React.Component {
     let fr = new FileReader();
     fr.onload = (event) => {
       let result = JSON.parse(event.target.result)
-      let { player, buffs, gearSets, playStyle } = this.state
+      let newPlayer = new Player()
+      let newBuffs = new Buffs()
+      let newGearSets = {tp: new GearSet(),ws: new GearSet()}
+      let newPlayStyle = new PlayStyle()
       if(result.player) {
         for(let key in result.player){
-          player[key] = result.player[key]
+          newPlayer[key] = result.player[key]
         }
-        player.calculateBaseStats(player.race, player.subJob)
-        player.calculateGiftBonus(player.jobPoints)
+        newPlayer.calculateBaseStats(newPlayer.race, newPlayer.subJob)
+        newPlayer.calculateGiftBonus(newPlayer.jobPoints)
       }
       if(result.buffs) {
         for(let key in result.buffs){
-          buffs[key] = result.buffs[key]
+          for(let k in result.buffs[key]){
+            Object.assign(newBuffs[key][k], result.buffs[key][k])
+          }
         }
       }
       if(result.gearSets) {
         for(let key in result.gearSets){
-          gearSets[key]['gear'] = result.gearSets[key]
+          newGearSets[key]['gear'] = result.gearSets[key]
         }
-        gearSets.tp.getTotal()
-        gearSets.ws.getTotal()
+        newGearSets.tp.getTotal()
+        newGearSets.ws.getTotal()
       }
       if(result.playStyle) {
         for(let key in result.playStyle){
-          playStyle[key] = result.playStyle[key]
+          newPlayStyle[key] = result.playStyle[key]
         }
       }
-      let newCalc = new Calculator(player, playStyle, gearSets, buffs)
+      let newCalc = new Calculator(newPlayer, newPlayStyle, newGearSets, newBuffs)
       this.setState({
-        player: player,
-        gearSets: gearSets,
-        buffs: buffs,
+        player: newPlayer,
+        playStyle: newPlayStyle,
+        gearSets: newGearSets,
+        buffs: newBuffs,
         damageModel: newCalc
       })
     }
@@ -216,7 +231,14 @@ class App extends React.Component {
       case 1:
         return <PlayerComp config={player} update={this.handleChange('player')} />
       case 2:
-        return <PlayStyleComp config={player} style={playStyle} buffs={buffs} targets={mobs} update={this.handleChange('playStyle')}/>
+        return <PlayStyleComp 
+                  gearSet={gearSets} 
+                  style={playStyle} 
+                  buff={buffs} 
+                  targets={mobs} 
+                  wsList={skills}
+                  update={this.handleChange('playStyle')}
+                />
       case 3:
         return <GearSetsComp config={gearSets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
       case 4:

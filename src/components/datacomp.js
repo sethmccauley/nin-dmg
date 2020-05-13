@@ -7,7 +7,8 @@ class DataComp extends React.Component {
         const handTwo = model.handTwoAvgStats(model.gearSets.tp)
         const shuriken = model.throwingAvgStats(model.gearSets.tp)
         const multiStats = model.getTpInfluences(model.gearSets.tp)
-        const round = model.attackRoundStats()
+        const round = model.attackRoundStats(model.gearSets.tp, model.gearSets.ws)
+        const wsAvgs = model.wsAvgs(model.gearSets.ws, round.avgTpFrom)
         return(
             <div className="w3-container w3-round">
                 <div className='w3-container'>
@@ -60,7 +61,7 @@ class DataComp extends React.Component {
                                     Hit Rate: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
-                                    <b>Avg Damage/Round:</b>
+                                    <b>Avg Damage/Hit:</b>
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.mainhand) ? 'H2H' : model.gearSets.tp.gear.mainhand.name}<br />
@@ -85,10 +86,10 @@ class DataComp extends React.Component {
                                     Hit Rate: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
-                                    <b>Avg Damage/Round:</b>
+                                    <b>Avg Damage/Hit:</b>
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                    {model.isEmpty(model.gearSets.tp.gear.offhand.name) ? '' : model.gearSets.tp.gear.offhand.name}<br />
+                                    {model.isEmpty(model.gearSets.tp.gear.offhand) ? '' : model.gearSets.tp.gear.offhand.name}<br />
                                     {handTwo.attack}<br />
                                     {handTwo.avgPdif}<br />
                                     {handTwo.avgCritPdif}<br />
@@ -110,7 +111,7 @@ class DataComp extends React.Component {
                                     Hit Rate: <br />
                                     TP/Hit: <br />
                                     Avg Hits/Round:<br />
-                                    <b>Avg Damage/Round:</b>
+                                    <b>Avg Damage/Hit:</b>
                                 </div>
                                 <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                     {model.isEmpty(model.gearSets.tp.gear.ammo) ? 'No Shuriken' : model.gearSets.tp.gear.ammo.name }<br />
@@ -126,7 +127,7 @@ class DataComp extends React.Component {
                             </div>
                         </div>
                         <div className="w3-right-align w3-light-grey w3-round-small" style={{paddingRight: '50px'}}>
-                            <b>Avg Total Damage/Round: {shuriken.avgDamage + handOne.avgDamage + handTwo.avgDamage}</b>
+                            <b>Avg Total Damage/Round: {(shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits).toFixed(3)}</b>
                         </div>
 
                         <div className="w3-row-padding w3-pale-blue w3-round-small w3-border" style={{padding: '4px', marginTop: '8px'}}>
@@ -136,12 +137,14 @@ class DataComp extends React.Component {
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                         Total Delay:<br />
                                         Delay Cap: <br />
-                                        Delay w/Reduction: 
+                                        Delay w/Reduction: <br />
+                                        <b>Melee DPS: </b>
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                         {round.totalDelay}<br />
                                         {round.delayCap}<br />
-                                        {round.delay}
+                                        {round.delay}<br />
+                                        <b>{((shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits)/(round.delay/60)).toFixed(3)}</b>
                                     </div>
                                 </div>
                                 <div className="w3-third">
@@ -154,7 +157,10 @@ class DataComp extends React.Component {
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
                                         <br />
-                                        <br />
+                                        {round.avgTpRnd}<br />
+                                        {round.avgRoundsWs}<br />
+                                        {((round.avgRoundsWs*round.delay)/60).toFixed(1)} Sec.<br />
+                                        {round.avgTpAt}
                                     </div>
                                 </div>
                                 <div className="w3-third">
@@ -166,6 +172,11 @@ class DataComp extends React.Component {
                                         Avg TP Total @ WS:
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        (Forced 2 Sec. Delay)<br />
+                                        {wsAvgs.avgTpReturn}<br />
+                                        {round.avgRoundsFrom}<br />
+                                        {(((round.avgRoundsFrom*round.delay)+120)/60).toFixed(1)} Sec.<br />
+                                        {round.avgTpFrom}
                                     </div>
                                 </div>
                             </div>
@@ -174,36 +185,52 @@ class DataComp extends React.Component {
                         <div className="w3-row-padding w3-light-grey w3-round-small" style={{padding: '4px', marginTop: '8px'}}>
                             <h5 style={{margin: '0px 3px'}}><b>Weapon Skill Averages</b></h5>
                             <div className="w3-section w3-row-padding">
-                                <b>Chosen WS: </b>{model.playStyle.mainWs}<br /><br />
+                                <b>Chosen WS: </b>{model.playStyle.mainWs.name ? model.playStyle.mainWs.name : ''}<br /><br />
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
                                         Total WSC: <br />
                                         Avg. Hits/Mainhand: <br />
-                                        Avg. Hits/Offhand:
+                                        Avg. Hits/Offhand: <br />
+                                        Mainhand HitRate: <br />
+                                        Offhand HitRate: 
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                        <br />
-                                        <br />
+                                        {wsAvgs.wsMod}<br />
+                                        {wsAvgs.handOneAvgHits}<br />
+                                        {wsAvgs.handTwoAvgHits}<br />
+                                        {(wsAvgs.handOneAcc*100).toFixed(0)}%<br />
+                                        {(wsAvgs.handTwoAcc*100).toFixed(0)}%
                                     </div>
                                 </div>
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
-                                        WS Avg. TP:<br />
-                                        WS Avg. pDif:<br />
+                                        Avg. TP on WS:<br />
+                                        Avg. TP Return: <br />
+                                        Avg. Mainhand pDif:<br />
+                                        Avg. Offhand pDif:<br />
                                         WS Dmg+:<br />
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
-                                        <br />
-                                        <br />
+                                        {wsAvgs.avgWsTpUse}<br />
+                                        {wsAvgs.avgTpReturn}<br />
+                                        {wsAvgs.handOnePdif}<br />
+                                        {wsAvgs.handTwoPdif}<br />
+                                        {wsAvgs.wsDamage}
                                     </div>
                                 </div>
                                 <div className="w3-third">
                                     <div className="w3-half w3-right-align" style={{paddingRight: '3px'}}>
+                                        TP Bonus: <br />
+                                        Aeonic Bonus:<br />
                                         Relic Bonus:<br />
                                         Empyrean Bonus:<br />
                                         <b>Total Avg Damage:</b>
                                     </div>
                                     <div className="w3-half w3-left-align" style={{paddingLeft: '3px'}}>
+                                        {wsAvgs.tpBonus}<br />
+                                        {wsAvgs.aeonicBonus}%<br />
+                                        {wsAvgs.relicBonus}%<br />
+                                        {wsAvgs.empyreanBonus}%<br />
                                     </div>
                                 </div>
                             </div>

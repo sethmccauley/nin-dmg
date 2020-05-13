@@ -11,7 +11,7 @@ export default class PlayStyle {
             saveTp: 0,
             minimumTp: 1000,
         }
-        this.food = '';
+        this.food = {};
         this.target = {}
     }
 }
