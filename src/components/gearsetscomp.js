@@ -2,7 +2,12 @@ import React from 'react'
 
 class GearSetsComp extends React.Component {
     render() {
-        const { weapons, gearList, update, config } = this.props;
+        const { weapons, gearList, update, config, model } = this.props;
+        const handOne = model.handOneAvgStats(model.gearSets.tp, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const handTwo = model.handTwoAvgStats(model.gearSets.tp, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const shuriken = model.throwingAvgStats(model.gearSets.tp, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const round = model.attackRoundStats(model.gearSets.tp, model.gearSets.ws, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const wsAvgs = model.wsAvgs(model.gearSets.ws, round.avgTpFrom, model.playStyle.mainWs, model.playStyle.target, model.buffs, model.player, model.playStyle)
         return(
             <div className="w3-container w3-round">
                 <div className='w3-container w3-left-align'>
@@ -156,6 +161,13 @@ class GearSetsComp extends React.Component {
 
                         </div>
                         <br />
+
+                        <div className="w3-left-align w3-padding-12" style={{marginTop: '8px'}}>
+                            <br />
+                            <b>Set Melee DPS: {((shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits)/(round.delay/60)).toFixed(3)}</b> 
+                        </div>
+
+                        <br />
                         <div id="ws1"><b>WS</b><br />
                             <div className="w3-quarter">
                                 <select value={config.ws.gear.mainhand.name} style={{width: '99%'}} className='w3-select'
@@ -301,6 +313,11 @@ class GearSetsComp extends React.Component {
                                     })}
                                 </select>
                             </div>
+                        </div>
+                        <div className="w3-left-align w3-padding-12" style={{marginTop: '8px'}}>
+                            <br />
+                            <b>Total Avg. WS Damage: </b> {wsAvgs.avgWsDamage}<br />
+                            <b>Total Avg. Damage/Cycle: </b> {(shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits + wsAvgs.avgWsDamage).toFixed(3)}
                         </div>
                     </div>
                 </div>

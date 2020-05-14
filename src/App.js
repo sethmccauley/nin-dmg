@@ -240,7 +240,14 @@ class App extends React.Component {
                   update={this.handleChange('playStyle')}
                 />
       case 3:
-        return <GearSetsComp config={gearSets} style={playStyle} update={this.handleChange('gearSets')} gearList={gear} weapons={weaponsList} />
+        return <GearSetsComp 
+                config={gearSets} 
+                style={playStyle} 
+                update={this.handleChange('gearSets')} 
+                gearList={gear} 
+                weapons={weaponsList} 
+                model={damageModel}
+              />
       case 4:
         return <DataComp model={damageModel} />
       default:

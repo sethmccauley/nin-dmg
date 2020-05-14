@@ -16,7 +16,6 @@ class Calculator {
         this.totalAvgDps = 0;
     }
 
-    // TODO: Need to push buffs as a parameter
     getMagicalHaste(buffs){
         let total = 0
         // Need to Include Soul Voice effects and Geo Haste Effects
@@ -113,9 +112,9 @@ class Calculator {
     getTargetStats(target, buffs){
         let targetDef = target.defense || 1
         let targetEva = target.evasion || 1
-        let targetAgi = target.agi || 1
-        let targetVit = target.vit || 1
-        let targetInt = target.int || 1
+        let targetAgi = target.agi || 0
+        let targetVit = target.vit || 0
+        let targetInt = target.int || 0
         let targetCritDefense = target.critDefense || 0
         // Get total DEF down, create final DEF
         let diaLookup = [104,156,208,236]
@@ -328,7 +327,7 @@ class Calculator {
         let avgPdif= 0 + parseFloat(Math.min((attack/targetDef), 3.25).toFixed(4), 10);
         let avgCritPdif= 0 + parseFloat((avgPdif*1.25).toFixed(4),10);
 
-        let dStr = 0 + (player.str + set.str) - target.vit
+        let dStr = 0 + (player.str + set.str) - targetVit
         let lambda = dStr < 20 ? Math.floor(8-(dStr/5)) : 4
         let wRank = 0 + Math.floor(set.gear.ammo.damage/9);
         let fStr= 0 + Math.floor(Math.max(Math.min(Math.floor((dStr+lambda)/2),(8+wRank)*2), (0-wRank)*2));
@@ -341,7 +340,6 @@ class Calculator {
         let avgDamage=0 + (wDamage*parseFloat(avgPdif,10)*(parseFloat((1 - (critRate/100)).toFixed(2),10)) + 
             wDamage*parseFloat(avgCritPdif,10)*(parseFloat(((critRate/100)).toFixed(2),10))*(1+ parseFloat((set.critDamage/100).toFixed(2),10)));
         avgDamage = Math.max(parseFloat(avgDamage.toFixed(3), 10), 0)
-
         return {avgPdif, wDamage, avgCritPdif, hitRate, avgHits , avgDamage, attack, critRate}
     }
 
