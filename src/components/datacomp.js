@@ -3,12 +3,12 @@ import React from 'react';
 class DataComp extends React.Component {
     render() {
         const { model } = this.props
-        const handOne = model.handOneAvgStats(model.gearSets.tp)
-        const handTwo = model.handTwoAvgStats(model.gearSets.tp)
-        const shuriken = model.throwingAvgStats(model.gearSets.tp)
-        const multiStats = model.getTpInfluences(model.gearSets.tp)
-        const round = model.attackRoundStats(model.gearSets.tp, model.gearSets.ws)
-        const wsAvgs = model.wsAvgs(model.gearSets.ws, round.avgTpFrom)
+        const handOne = model.handOneAvgStats(model.gearSets.tp, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const handTwo = model.handTwoAvgStats(model.gearSets.tp, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const shuriken = model.throwingAvgStats(model.gearSets.tp, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const multiStats = model.getTpInfluences(model.gearSets.tp, model.buffs, model.player)
+        const round = model.attackRoundStats(model.gearSets.tp, model.gearSets.ws, model.buffs, model.playStyle.target, model.player, model.playStyle)
+        const wsAvgs = model.wsAvgs(model.gearSets.ws, round.avgTpFrom, model.playStyle.mainWs, model.playStyle.target, model.buffs, model.player, model.playStyle)
         return(
             <div className="w3-container w3-round">
                 <div className='w3-container'>
@@ -231,8 +231,12 @@ class DataComp extends React.Component {
                                         {wsAvgs.aeonicBonus}%<br />
                                         {wsAvgs.relicBonus}%<br />
                                         {wsAvgs.empyreanBonus}%<br />
+                                        <b>{wsAvgs.avgWsDamage}</b>
                                     </div>
                                 </div>
+                            </div>
+                            <div className="w3-right-align w3-light-grey w3-round-small" style={{paddingRight: '50px'}}>
+                                <b>Avg Total Damage/Cycle: {(shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits + wsAvgs.avgWsDamage).toFixed(3)}</b>
                             </div>
                         </div>
 
