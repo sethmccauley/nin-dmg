@@ -95,6 +95,9 @@ class App extends React.Component {
               let getWs = skills[(gearSets.ws.gear.mainhand.type ? gearSets.ws.gear.mainhand.type : 'katana')].find((value) => {
                 return value.name === e.target.value
               })
+              if(this.state.damageModel.isEmpty(getWs)){
+                getWs = {name: ''}
+              }
               playStyle.mainWs = getWs
             } else if(buffChanges[1] === 'afterMath' && buffChanges[2] === 'type'){
               playStyle.afterMath.type = e.target.value;
@@ -140,7 +143,8 @@ class App extends React.Component {
         if(e.target.value === 'none') foundItem = {name: 'none'}
         gearSets[commands[2]].gear[commands[0]]= foundItem
         if(wFlag) gearSets[(commands[2] === 'tp') ? 'ws' : 'tp'].gear[commands[0]] = foundItem
-        gearSets[commands[2]].getTotal()
+        gearSets.tp.getTotal()
+        gearSets.ws.getTotal()
         this.setState({
           gearSets: gearSets
         })

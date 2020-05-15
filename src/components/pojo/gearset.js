@@ -44,6 +44,7 @@ export default class GearSet {
         this.regain= 0;
         this.daken= 0;
         this.pdl= 0;
+        this.ftp= 0;
         this.critRate= 0;
         this.critDamage= 0;
         this.dualWield= 0;
@@ -60,7 +61,7 @@ export default class GearSet {
     getTotal(){
         let tempTotals = {}
         let catalogable = ['hp','str','dex','agi','vit','int','chr','mnd','attack','accuracy','rAttack','rAccuracy','mAccuracy','mDamage','mAttackBonus','throwingSkill',
-                            'doubleAttack','tripleAttack','quadAttack','storeTp','haste','wsDamage','regain','daken','pdl','critRate','critDamage','dualWield','tpBonus']
+                            'doubleAttack','tripleAttack','quadAttack','storeTp','ftp','haste','wsDamage','regain','daken','pdl','critRate','critDamage','dualWield','tpBonus']
         catalogable.forEach(value => {
             tempTotals[value] = 0
         })

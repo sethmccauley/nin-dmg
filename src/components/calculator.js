@@ -465,7 +465,7 @@ class Calculator {
         let avgWsTpUse = tp + tpBonus
         let avgTpReturn = this.getWsTpReturn(set, ws, buffs, player, target, playStyle)
 
-        //Calculate fTP
+        //Calculate fTP (get boosts from gear)
         let ftp = 0
         if(avgWsTpUse < 1000){
             ftp = 0
@@ -476,6 +476,7 @@ class Calculator {
         if(avgWsTpUse > 2000 && avgWsTpUse <= 3000){
             ftp = chosenWs.ftp2 + (chosenWs.ftp3-chosenWs.ftp2)*((avgWsTpUse-2000)/1000)
         }
+        ftp += Math.max((set.ftp/1024), 0)
 
         //Calculate Per Hand Damage and Tally
         //First Hand First Hit
@@ -484,10 +485,10 @@ class Calculator {
         mainHitDamage *= (1 + (wsDamage/100))
         //First Hand First Hit Multi-Attack
         let mainHandMulti = 0
-        mainHandMulti += 0 + Math.max((handOne.avgHits - 1), 0)*(handOne.wDamage+wsMod)*(handOne.avgPdif)*(chosenWs.ftpCarry ? chosenWs.ftp : 1.0)
+        mainHandMulti += 0 + Math.max((handOne.avgHits - 1), 0)*(handOne.wDamage+wsMod)*(handOne.avgPdif)*(chosenWs.ftpCarry ? ftp : 1.0)
         //First Hand Extra Hits
         if(chosenWs.extraHits > 0){
-            mainHandMulti += ( chosenWs.extraHits * handOneAcc * handOne.avgPdif )*(chosenWs.ftpCarry ? ftp : 1.0)
+            mainHandMulti += ( chosenWs.extraHits * handOneAcc * handOne.avgPdif )*(chosenWs.ftpCarry ? ftp : 1.0)*(handOne.wDamage+wsMod)
         }
         //Second Hand Hit
         let offHandHits = 0
@@ -495,14 +496,21 @@ class Calculator {
             offHandHits += (handTwo.wDamage+wsMod)*(parseFloat(handTwo.avgHits, 10))*(handTwo.avgPdif)*(chosenWs.ftpCarry ? ftp : 1.0)
         }
         //Multiply By Final Damage
-        
         let totalDmg = mainHitDamage + mainHandMulti + offHandHits
-
-        let avgWsDamage= parseFloat(totalDmg.toFixed(3), 10)
+        
         let remaLookup= {'Kikoku': 40, 'Kikoku R15': 68, 'Kannagi R15': 10, 'Heishi Shorinken R15': 10}
+        let situationalLookup = {'Naegling': 15, 'Tauret': 50}
+        let multiBonus = 0 + (set.gear.mainhand.name === 'Naegling' && chosenWs.name === 'Savage Blade' ? situationalLookup[set.gear.mainhand.name] : 0) +
+                        (set.gear.mainhand.name === 'Tauret' && chosenWs.name === 'Evisceration' ? situationalLookup[set.gear.mainhand.name] : 0)
         let aeonicBonus = 0 + (set.gear.mainhand.name === 'Heishi Shorinken R15' && chosenWs.name === 'Blade: Shun' ? remaLookup[set.gear.mainhand.name] : 0)
         let relicBonus= 0 + (set.gear.mainhand.name.search('Kikoku') !== -1 && chosenWs.name === 'Blade: Metsu' ? remaLookup[set.gear.mainhand.name] : 0)
         let empyreanBonus= 0 + (set.gear.mainhand.name === 'Kannagi R15' && chosenWs.name === 'Blade: Hi' ? remaLookup[set.gear.mainhand.name] : 0)
+        if(aeonicBonus > 0) totalDmg *= ((aeonicBonus/100)+1)
+        if(multiBonus > 0) totalDmg *= ((multiBonus/100)+1)
+        if(relicBonus > 0) totalDmg *= ((relicBonus/100)+1)
+        if(empyreanBonus > 0) totalDmg *= ((empyreanBonus/100)+1)
+
+        let avgWsDamage= parseFloat(totalDmg.toFixed(3), 10)
         return {handOnePdif: handOne.avgPdif, handTwoPdif: handTwo.avgPdif, 
                 avgWsDamage, wsMod, handOneAvgHits, handOneAcc, handTwoAvgHits, 
                 handTwoAcc, avgTpReturn, tpBonus, wsDamage, avgWsTpUse, aeonicBonus,

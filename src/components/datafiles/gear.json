@@ -17,7 +17,7 @@
         {"name": "Adhemar Bonnet +1 A","hp":41,"str":19,"dex":33,"vit":15,"agi":31,"int":14,"mnd":14,"chr":14,"accuracy":20,"attack":36,"rAttack":36,"tripleAttack":4,"haste":81,"critDamage":6},
         {"name": "Adhemar Bonnet +1 B","hp":41,"str":31,"dex":33,"vit":15,"agi":19,"int":14,"mnd":14,"chr":14,"attack":56,"rAttack":20,"tripleAttack":4,"haste":81,"critDamage":6},
         {"name": "Dampening Tam Aug","hp":36,"str":18,"dex":34,"vit":18,"agi":20,"int":18,"mnd":22,"chr":18,"accuracy":35,"rAccuracy":20,"mAccuracy":35,"quadAttack":3,"haste":71},
-        {"name": "Gavialis Helm","hp":115,"str":21,"dex":25,"vit":21,"agi":25,"int":18,"mnd":18,"chr":19,"accuracy":25,"attack":25,"haste":81,"fTp": 117},
+        {"name": "Gavialis Helm","hp":115,"str":21,"dex":25,"vit":21,"agi":25,"int":18,"mnd":18,"chr":19,"accuracy":25,"attack":25,"haste":81,"ftp": 117},
         {"name": "Hachiya Hatsuburi +3","hp":64,"str":33,"dex":33,"vit":32,"agi":32,"int":31,"mnd":31,"chr":31,"mAccuracy":54,"haste":81,"wsDamage":10},
         {"name": "Herculean Helm (DEX TA+)","hp":38,"str":22,"dex":38,"vit":18,"agi":25,"int":20,"mnd":16,"chr":17,"accuracy":25,"attack":40,"rAttack":15,"mAttackBonus":10,"tripleAttack":4,"haste":81},
         {"name": "Herculean Helm (DEX STP+)","hp":38,"str":22,"dex":38,"vit":18,"agi":25,"int":20,"mnd":16,"chr":17,"accuracy":25,"attack":40,"rAttack":15,"mAttackBonus":10,"storeTp":7,"haste":81},
@@ -39,7 +39,7 @@
     "neck": [
         {"name": "Caro Necklace", "str": 6, "dex": 6, "attack": 10},
         {"name": "Combatant", "combatSkill": 15, "storeTp": 4},
-        {"name": "Fotia Gorget", "accuracy": 10, "fTp": 97.65625},
+        {"name": "Fotia Gorget", "accuracy": 10, "ftp": 97.65625},
         {"name": "Moonlight Nodowa", "accuracy": 25, "zanshin": 10, "storeTp": 10},
         {"name": "Ninja's Nodowa +1 (Aug)", "dex": 12, "agi": 12, "accuracy": 20, "rAccuracy": 20, "storeTp": 5, "daken": 20, "pdl": 0.08},
         {"name": "Ninja's Nodowa +2 (Aug)", "dex": 15, "agi": 15, "accuracy": 25, "rAccuracy": 25, "storeTp": 7, "daken": 25, "pdl": 0.10},
