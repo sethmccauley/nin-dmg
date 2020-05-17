@@ -144,7 +144,7 @@ class DataComp extends React.Component {
                                         {round.totalDelay}<br />
                                         {round.delayCap}<br />
                                         {round.delay}<br />
-                                        <b>{((shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits)/(round.delay/60)).toFixed(3)}</b>
+                                        <b>{(((shuriken.avgDamage*shuriken.avgHits + handOne.avgDamage*handOne.avgHits + handTwo.avgDamage*handTwo.avgHits)*(round.avgRoundsWs))/((round.avgRoundsWs*round.delay)/60)).toFixed(3)}</b>
                                     </div>
                                 </div>
                                 <div className="w3-third">
